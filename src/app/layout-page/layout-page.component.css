@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Nexa-Heavy';
+  src: url('../../assets/fonts/Nexa-Heavy.ttf') format('truetype');
+}
+
+.toolbar {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.centered {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.highlighted {
+  color: #ffffff; /* Cambia el color según tus preferencias */
+  background-color: #633144; /* Cambia el color de fondo según tus preferencias */
+  padding: 8px 20px; /* Ajusta el espaciado según sea necesario */
+  border-radius: 4px; /* Ajusta el radio del borde según sea necesario */
+}
+
+.favicon {
+  vertical-align: middle;
+  font-family: 'Nexa-Heavy', sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.favicon .icon-container {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.favicon .icon-container svg {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.footer {
+  background-color: #a9aaab91; /* Color de fondo del footer */
+  /* padding: 10px; */
+  position: fixed; /* Fija el footer en la parte inferior */
+  width: 100%; /* Ancho completo del footer */
+  height: 20px;
+  bottom: 0; /* Alinea el footer en la parte inferior */
+}
+
+.footer {
+  display: none;
+}
+
+.footer.show {
+  display: block;
+}

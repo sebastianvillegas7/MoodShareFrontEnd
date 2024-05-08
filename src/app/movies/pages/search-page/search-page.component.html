@@ -1,0 +1,25 @@
+<div id="contenidoResultados" class="row p-3">
+  <div class="flex flex-column p-2 justify-content-center align-items-center">
+    <form [formGroup]="searchForm">
+      <mat-form-field class="custom-mat-form-field">
+        <mat-label>Busca una pelicula</mat-label>
+        <input
+          type="text"
+          matInput
+          (keydown.enter)="searchMovies()"
+          formControlName="searchInput"
+        />
+      </mat-form-field>
+    </form>
+    <div class="col-16">
+      <movies-list-page [listadoMovies]="moviesService.listadoMovies"/>
+    </div>
+    <br>
+    <br>
+    <!-- Botón para cargar más resultados -->
+    <button *ngIf="showLoadMoreBtn" mat-stroked-button color="primary" (click)="loadMoreMovies()">Cargar más resultados</button>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>

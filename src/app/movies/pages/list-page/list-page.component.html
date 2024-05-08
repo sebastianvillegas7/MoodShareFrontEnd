@@ -1,0 +1,9 @@
+<div class="movie-container">
+  <div class="movie-card" *ngFor="let movie of listadoMovies" class="movie-card" [routerLink]="['/movies/', movie.id]">
+    <mat-card class="movie-card-inner">
+      <div class="card-image">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + (movie.poster_path || movie.backdrop_path)" alt="{{ movie.title }} Poster">
+      </div>
+    </mat-card>
+  </div>
+</div>

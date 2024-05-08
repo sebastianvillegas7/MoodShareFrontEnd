@@ -1,0 +1,9 @@
+.buttons {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los elementos */
+  margin-top: 20px; /* Ajusta el espacio superior entre el contenido y los botones */
+}
+
+.buttons button {
+  margin: 0 5px; /* Ajusta el espacio horizontal entre los botones */
+}

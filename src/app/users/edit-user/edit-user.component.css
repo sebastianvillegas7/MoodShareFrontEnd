@@ -1,0 +1,22 @@
+.container {
+  margin: 0 auto;
+  min-width: 30em;
+  text-align: center;
+  padding-top: 10px;
+  height: 550px;
+}
+
+div.mat-dialog-actions {
+  width: 12em;
+  margin: auto;
+}
+
+.custom-mat-form-field {
+  width: 80%; /*Ancho del campo de búsqueda */
+}
+
+.buttons {
+  width: auto;
+  justify-content: center;
+  margin: auto;
+}

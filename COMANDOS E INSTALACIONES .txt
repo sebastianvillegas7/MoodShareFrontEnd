@@ -1,0 +1,13 @@
+COMANDOS E INSTALACIONES 
+CREACION PROYECTO ANGULAR 16
+
+- Descargar e instalar node.js y nvm for windows
+- Ejecutar los comandos en consola:
+
+npm install -g npm@8.19.4 // esta version funciona bien con node 16.20.2
+nvm install 16.20.2
+nvm use 16.20.2
+npx -p @angular/cli@16 ng new new-project
+npm start
+
+

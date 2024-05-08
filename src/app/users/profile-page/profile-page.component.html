@@ -1,0 +1,73 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<mat-tab-group style="height:100%;">
+  <mat-tab label="Info del usuario">
+    <ng-template matTabContent>
+      <div class="full-height-container">
+        <div class="card-like-content">
+          <div class="nombre_publico-container">
+            <div class="nombre_publico">
+              {{ loca[0].nombre_publico }}
+            </div>
+          </div>
+          <div class="info-section fs-5">
+            <mat-chip color="primary">
+              ID Usuario
+            </mat-chip>
+            {{ loca[0].id_usuario }}
+          </div>
+          <div class="info-section fs-5">
+            <mat-chip color="primary">
+              Nombre de Usuario
+            </mat-chip>
+            {{ loca[0].usuario }}
+          </div>
+          <div class="info-section fs-5">
+            <mat-chip color="primary">
+              Rol
+            </mat-chip>
+            {{ loca[0].id_rol === 1 ? 'Administrador' : (loca[0].id_rol === 2 ? 'Usuario' : 'Otro') }}
+          </div>
+        </div>
+        <div class="bottom-buttons">
+          <button mat-flat-button color="primary" class="editar-button" (click)="editUser(loca[0])">Editar</button>
+          <button mat-raised-button color="primary" class="cerrar-button" (click)="goBack()">Cerrar</button>
+        </div>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Favoritos">
+    <ng-template matTabContent>
+      <div class="full-height-container">
+        <div class="card-like-content">
+          <div class="movie-container">
+            <mat-card class="card-like-content" *ngIf="lista_fav.length === 0">
+              No hay películas favoritas para mostrar.
+            </mat-card>
+            <div class="movie-card" *ngFor="let movie of lista_fav" (click)="redirectToMovie(movie.id)">
+              <mat-card class="movie-card-inner" *ngIf="lista_fav.length > 0">
+                <div class="card-content">
+                  <div class="card-image">
+                    <img [src]="'https://image.tmdb.org/t/p/w500' + (movie.backdrop_path)" alt="{{ movie.title }} Poster">
+                  </div>
+                  <div class="card-info">
+                    <h3>{{ movie.title }}</h3>
+                    <p>{{ movie.overview }}</p>
+                  </div>
+                </div>
+                <button mat-flat-button color="primary" (click)="quitarFavoritaPorId(movie.id); $event.stopPropagation()">
+                  <mat-icon>love</mat-icon>
+                  Quitar de favoritas
+                </button>
+
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
