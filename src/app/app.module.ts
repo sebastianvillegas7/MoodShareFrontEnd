@@ -10,8 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UsersModule } from './users/users.module';
-import { ProfilePageComponent } from './users/profile-page/profile-page.component';
+// import { UsersModule } from './users/users.module';
+// import { ProfilePageComponent } from './users/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +25,10 @@ import { ProfilePageComponent } from './users/profile-page/profile-page.componen
     HttpClientModule,
     MatIconModule,
     MatDialogModule,
-    UsersModule // agregado
+    // UsersModule // agregado
   ],
   exports: [
-    ProfilePageComponent // agregado
+    // ProfilePageComponent // agregado
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -1,8 +1,10 @@
-import { Image } from "./image.interface";
+import { ArtistImage } from "./artist-image.interface";
 
-export interface Movie {  
-  name: string;  
-  listeners: number;
+export interface Artist {  
+  name: string;
+  playcount: string;
+  listeners: string;
+  mbid: string;
   url: string;
-  images: Image[];  
+  images: ArtistImage[];  
 }

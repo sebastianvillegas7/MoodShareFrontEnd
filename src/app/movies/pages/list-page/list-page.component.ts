@@ -4,14 +4,14 @@ import { Movie } from '../../../shared/interfaces/movie.interface';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'movies-list-page',
+  selector: 'list-page',
   templateUrl: './list-page.component.html',
   styleUrls: ['./list-page.component.css']
 })
 
 export class ListPageComponent {
   @Input()
-  public listadoMovies: Movie[] = [];
+  public listado: any[] = [];
 
   constructor( private router: Router ) { }
 
@@ -19,11 +19,11 @@ export class ListPageComponent {
 
   }
 
-  updateListadoMovies(movies: Movie[]) {
-    this.listadoMovies = movies;
+  updateListado(listado: any[]) {
+    this.listado = listado;
   }
 
-  verDetalle(id: number) {
-    this.router.navigate(['/detail/', id]);
-  }
+  // verDetalle(id: number) {
+  //   this.router.navigate(['/detail/', id]);
+  // }
 }

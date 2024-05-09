@@ -16,17 +16,17 @@ export const environment = {
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 // API SGE PARA LOGIN
-export const URL_BASE_SGE = 'http://143.47.48.255/dev';
-export const URL_API_SGE = `${URL_BASE_SGE}/api/private`;
+// export const URL_BASE_SGE = 'http://143.47.48.255/dev';
+// export const URL_API_SGE = `${URL_BASE_SGE}/api/private`;
 
-// API PARA MOVIES
-export const URL_API_MOVIES = 'https://api.themoviedb.org/3/';
-export const TOKEN_API_MOVIES = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmMwMWQxZGJhNTM4OWJjZjI5MDUzMzc0ZWNiZDUxZCIsInN1YiI6IjY1Yzc1MGUyNTRhMDk4MDE4NDAxOWJkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UPpDboS8MDXxdvnDizQXZ_IiHAc72Ekvi65X9nAhifc';
+// API LAST.fm
+export const URL_API_LASTFM = 'http://ws.audioscrobbler.com/2.0/';
+export const API_KEY_LASTFM = '7694c5aed3f63cb53857ce738f75a4a8';
 
 // Cabeceras para las solicitudes HTTP a la API de películas
-export const MOVIES_API_HEADERS = {
+export const LASTFM_API_HEADERS = {
   headers: {
-    'Authorization': `Bearer ${TOKEN_API_MOVIES}`,
+    'Authorization': `Bearer ${API_KEY_LASTFM}`,
     'accept': 'application/json'
   }
 };
