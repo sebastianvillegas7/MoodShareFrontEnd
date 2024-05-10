@@ -1,0 +1,35 @@
+<div id="contenidoResultados" class="row p-3 justify-content-center align-items-center" style="margin-left: 200px;">
+  <div class="form-container d-flex">
+    <form [formGroup]="searchForm">
+    <mat-form-field class="custom-mat-form-field" style="width: 200px;">
+      <mat-label>Selecciona una opción</mat-label>
+      <mat-select formControlName="tipoDeBusqueda">
+        <mat-option value="artist">Artista</mat-option>
+        <mat-option value="track">Track</mat-option>
+        <mat-option value="album">Álbum</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="custom-mat-form-field" style="width: 700px;">
+      <mat-label>Buscar...</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Buscar..."
+        (keydown.enter)="searchItems()"
+        formControlName="busqueda"
+      />
+    </mat-form-field>
+  </form>
+  </div>
+  <div class="col-12">
+    <list-page [listado]="lastfmService.listadoArtists"/>
+  </div>
+  <br>
+  <br>
+  <!-- Botón para cargar más resultados -->
+  <button *ngIf="showLoadMoreBtn" mat-stroked-button color="primary" (click)="loadMore()">Cargar más resultados</button>
+  <br>
+  <br>
+  <br>
+</div>
+

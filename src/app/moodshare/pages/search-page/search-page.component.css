@@ -1,0 +1,11 @@
+/* .custom-mat-form-field {
+  width: 900px; /*Ancho del campo de búsqueda 
+} */
+
+.form-container {
+  display: flex;
+}
+
+.custom-mat-form-field {
+  margin-right: 1px; /* Opcional: agregar un espacio entre los elementos */
+}

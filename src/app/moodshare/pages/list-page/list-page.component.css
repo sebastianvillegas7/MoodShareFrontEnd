@@ -1,10 +1,10 @@
-.movie-container {
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.movie-card {
+.card {
   margin: 10px;
   cursor: pointer;
   transition: box-shadow 0.3s ease-in-out;
@@ -17,7 +17,7 @@
   min-height: 300px; /* Altura mínima de la tarjeta */
 }
 
-.movie-card:hover {
+.card:hover {
   box-shadow: 4px 4px 8px 10 rgba(247, 127, 254, 0.737);
 }
 

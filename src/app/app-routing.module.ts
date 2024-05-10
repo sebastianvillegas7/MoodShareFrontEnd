@@ -16,8 +16,8 @@ const routes: Routes = [
       //   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
       // },
       {
-        path: 'movies',
-        loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule),
+        path: '',
+        loadChildren: () => import('./moodshare/moodshare.module').then(m => m.MoodShareModule),
       },
       // {
       //   path: 'users',
@@ -25,12 +25,12 @@ const routes: Routes = [
       // },
       {
         path: '',
-        redirectTo: 'movies',
+        redirectTo: '',
         pathMatch: 'full'
       },
       {
         path: '**',
-        redirectTo: 'movies',
+        redirectTo: '',
         pathMatch: 'full'
       },
     ]

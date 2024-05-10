@@ -9,15 +9,13 @@
   </div>
 </div> -->
 
-<div class="movie-container">
-  <div class="movie-card" *ngFor="let item of listado" [routerLink]="['/movies/', item.id]">
-    <mat-card class="movie-card-inner">
+<div class="container">
+  <div class="card" *ngFor="let item of listado" [routerLink]="['/movies/', item.id]">
+    <mat-card class="card-inner">
       <span>{{ item.name }}</span>
       <div class="card-image">
-        <!-- <img [src]="item.image[4]['#text']" [alt]="item.name + ' Image'"> -->
-        <!-- <img [src]="item.image[4]['#text']" [alt]="item.name + ' Image'"> -->
-        <img [src]="'https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/15665/production/_107435678_perro1.jpg'" alt="Poster">
-        
+        <img [src]="item.imageUrl" [alt]="item.name + ' Image'">
+        <!-- <img [src]="item.image[0]['#text']" [alt]="item.name + ' Image'"> -->            
       </div>
     </mat-card>
   </div>

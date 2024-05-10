@@ -1,8 +1,7 @@
-import { Track } from "./artist.interface";
+import { Track } from "./track.interface";
 
-export interface SearchResponseSong {
-  page: number;
-  results: Track[];
-  total_pages: number;
-  total_results: number;
+export interface SearchResponseTrack {
+  trackmatches: {
+    track: Track[]; 
+  };
 }

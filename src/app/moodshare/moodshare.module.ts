@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MoviesRoutingModule } from './movies-routing.module';
+import { MoodShareRoutingModule } from './moodshare-routing.module';
 // import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { LayoutPageComponent } from '../layout-page/layout-page.component';
-// import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MaterialModule } from '../material/material.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,12 +18,12 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
     LayoutPageComponent,
     HomePageComponent,
     ListPageComponent,
-    // SearchPageComponent,
+    SearchPageComponent,
     // DetailPageComponent
   ],
   imports: [
     CommonModule,
-    MoviesRoutingModule,
+    MoodShareRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
     MatDialogModule
@@ -31,4 +31,5 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
   ],
   exports: [ListPageComponent]
 })
-export class MoviesModule { }
+
+export class MoodShareModule { }

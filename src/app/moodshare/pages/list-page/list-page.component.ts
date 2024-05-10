@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { MovieService } from 'src/app/services/movies.service';
-import { Movie } from '../../../shared/interfaces/movie.interface';
 import { Router } from '@angular/router';
 
 @Component({
