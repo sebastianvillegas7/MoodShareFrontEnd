@@ -1,8 +1,9 @@
-import { Album } from "./artist.interface";
+import { Album } from "./album.interface";
 
 export interface SearchResponseAlbum {
-  page: number;
-  results: Album[];
-  total_pages: number;
-  total_results: number;
+  results: {
+    albummatches: {
+      album: Album[]; 
+    };
+  }
 }

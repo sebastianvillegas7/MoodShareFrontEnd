@@ -4,8 +4,7 @@ export interface Track {
   name: string;
   artist: string;
   url: string;
-  streamable: string;
-  listeners: string;
+  duration: number;
   image: TrackImage[];
   mbid: string;
 }

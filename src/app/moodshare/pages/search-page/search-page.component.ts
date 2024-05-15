@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LastFMService } from 'src/app/services/lasftm.service';
 import { SearchResponseArtist } from 'src/app/shared/interfaces/search-response-artist.interface';
+import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-track.interface';
 
 @Component({
   selector: 'moodshare-search-page',
@@ -50,7 +51,16 @@ export class SearchPageComponent implements OnInit {
         );
         break;
       case 'track':
-        this.lastfmService.getTrackByName(busqueda);
+        this.lastfmService.getTrackByName(busqueda).subscribe(
+          (respuesta: SearchResponseTrack) => {
+            // Almacenar los tracks en el servicio
+            this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...respuesta.results.trackmatches.track];
+            this.showLoadMoreBtn = true;
+          },
+          error => {
+            console.error('Error en la solicitud HTTP:', error);
+          }
+        );
         break;
       case 'album':
         // this.lastfmService.searchAlbums(searchTerm);

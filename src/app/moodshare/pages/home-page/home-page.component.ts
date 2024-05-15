@@ -3,6 +3,7 @@ import { LastFMService } from 'src/app/services/lasftm.service';
 import { Permises } from 'src/app/shared/interfaces/api-response.interface';
 import { Artist } from 'src/app/shared/interfaces/artist.interface';
 import { SearchResponseArtist } from 'src/app/shared/interfaces/search-response-artist.interface';
+import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-track.interface';
 
 @Component({
   selector: 'moodshare-home-page',
@@ -22,15 +23,16 @@ export class HomePageComponent implements OnInit {
     this.searchTrending();
   }
 
+
   // Método para buscar los trending charts que se muestran en el home page
   public searchTrending() {
-    this.lastfmService.getTopChartsArtists().subscribe(
-      (respuesta: SearchResponseArtist) => {  
+    this.lastfmService.getTopChartsTracks().subscribe(
+      (respuesta: SearchResponseTrack) => {  
         // Accede a los artistas dentro de la respuesta JSON
-        const artistas = respuesta.results.artistmatches.artist;
+        const TRACKS = respuesta.results.trackmatches.track;
   
-        // Almacena los artistas en la variable 'listadoArtists' del servicio
-        this.lastfmService.listadoArtists = [...this.lastfmService.listadoArtists, ...artistas];        
+        // Almacena los tracks en la variable 'listadoTracks' del servicio
+        this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...TRACKS];        
       },
       error => {
         console.error('Error en la solicitud HTTP:', error);
