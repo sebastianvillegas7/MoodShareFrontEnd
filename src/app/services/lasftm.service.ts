@@ -8,6 +8,7 @@ import { SearchResponseTrack } from '../shared/interfaces/search-response-track.
 import { Track } from '../shared/interfaces/track.interface';
 import { SearchResponseAlbum } from '../shared/interfaces/search-response-album.interface';
 import { SearchResponse } from '../shared/interfaces/search-response.interface';
+import { Album } from '../shared/interfaces/album.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ import { SearchResponse } from '../shared/interfaces/search-response.interface';
 export class LastFMService {
   public listadoArtists: Artist[] = [];
   public listadoTracks: Track[] = [];
-  // public listadoAlbums: Artist[] = [];
+  public listadoAlbums: Album[] = [];
 
   constructor(private http: HttpClient) { }
 

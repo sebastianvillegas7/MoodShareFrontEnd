@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LastFMService } from 'src/app/services/lasftm.service';
-import { Permises } from 'src/app/shared/interfaces/api-response.interface';
 import { Artist } from 'src/app/shared/interfaces/artist.interface';
 import { SearchResponseArtist } from 'src/app/shared/interfaces/search-response-artist.interface';
 import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-track.interface';
+import { SearchResponse } from 'src/app/shared/interfaces/search-response.interface';
 
 @Component({
   selector: 'moodshare-home-page',
@@ -11,7 +11,6 @@ import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-t
 })
 
 export class HomePageComponent implements OnInit {
-  permises!: Permises | null;
 
   constructor(
     public lastfmService: LastFMService,
@@ -29,13 +28,14 @@ export class HomePageComponent implements OnInit {
   // Método para buscar los trending charts que se muestran en el home page
   public searchTrending() {
     this.lastfmService.getLastReleases().subscribe(
-      (respuesta: SearchResponseTrack) => {
+      (respuesta: SearchResponse) => {
         // Accede a los artistas dentro de la respuesta JSON
-        const TRACKS = respuesta.results.trackmatches.track;
+        const ALBUMS_TREND = respuesta.results;
 
         // Almacena los tracks en la variable 'listadoTracks' del servicio
-        this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...TRACKS];
-        console.log(this.lastfmService.listadoTracks);
+        this.lastfmService.listadoAlbums = [...this.lastfmService.listadoAlbums, ...ALBUMS_TREND];
+        console.log("respuesta: " + respuesta);        
+        console.log(this.lastfmService.listadoAlbums);
       },
       error => {
         console.error('Error en la solicitud HTTP:', error);
