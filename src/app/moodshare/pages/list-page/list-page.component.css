@@ -21,6 +21,13 @@
   box-shadow: 4px 4px 8px 10 rgba(247, 127, 254, 0.737);
 }
 
+.card-title {
+  font-size: 25px;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-top: 10px;
+}
+
 .card-image img {
   width: 100%;
   height: 100%; /* La imagen ocupa toda la altura de la tarjeta */

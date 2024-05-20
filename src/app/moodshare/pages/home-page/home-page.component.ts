@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { LastFMService } from 'src/app/services/lasftm.service';
-import { Artist } from 'src/app/shared/interfaces/artist.interface';
-import { SearchResponseArtist } from 'src/app/shared/interfaces/search-response-artist.interface';
-import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-track.interface';
+import { DiscogsService } from 'src/app/services/discogs.service';
+import { Album } from 'src/app/shared/interfaces/album.interface';
 import { SearchResponse } from 'src/app/shared/interfaces/search-response.interface';
 
 @Component({
@@ -13,29 +11,27 @@ import { SearchResponse } from 'src/app/shared/interfaces/search-response.interf
 export class HomePageComponent implements OnInit {
 
   constructor(
-    public lastfmService: LastFMService,
+    public lastfmService: DiscogsService,
     // public usersService: UsersService,
     ) { }
 
   ngOnInit(): void {
     // this.usersService.setUserByToken();
     this.searchTrending();
-
-
   }
 
 
   // Método para buscar los trending charts que se muestran en el home page
   public searchTrending() {
+    this.lastfmService.listadoAlbums = [];
+
     this.lastfmService.getLastReleases().subscribe(
-      (respuesta: SearchResponse) => {
+      (respuesta: SearchResponse<Album>) => {
         // Accede a los artistas dentro de la respuesta JSON
         const ALBUMS_TREND = respuesta.results;
 
         // Almacena los tracks en la variable 'listadoTracks' del servicio
         this.lastfmService.listadoAlbums = [...this.lastfmService.listadoAlbums, ...ALBUMS_TREND];
-        console.log("respuesta: " + respuesta);        
-        console.log(this.lastfmService.listadoAlbums);
       },
       error => {
         console.error('Error en la solicitud HTTP:', error);
@@ -44,29 +40,3 @@ export class HomePageComponent implements OnInit {
   }
 
 }
-
-// artistas.forEach(artist => {
-//   if (artist.mbid != null) {
-//     this.wikiService.getArtistImage(artist.mbid).subscribe(
-//       (response: any) => {
-//         // Extraemos la URL de la imagen de la respuesta de Wikipedia
-//         const pages = response.query.pages;
-//         const pageId = Object.keys(pages)[0];
-//         const imageUrl = pages[pageId].original.source;
-
-//         // Agregamos la URL de la imagen al objeto del artista
-//         artist.imageUrl = imageUrl;
-//         console.log(imageUrl);
-
-
-//         // Agregamos el artista con la imagen al listado
-//         this.listadoArtists.push(artist);
-//       },
-//       error => {
-//         console.error('Error al obtener la imagen del artista desde Wikipedia:', error);
-//       }
-//     );
-//   }
-// });
-
-// this.lastfmService.listadoArtists = this.listadoArtists;

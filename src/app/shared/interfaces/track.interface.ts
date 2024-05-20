@@ -1,10 +1,17 @@
-import { TrackImage } from "./track-image.interface";
-
 export interface Track {
-  name: string;
-  artist: string;
-  url: string;
-  duration: number;
-  image: TrackImage[];
-  mbid: string;
+  country: string;
+  year: string;
+  label: string[];
+  type: string;
+  genre: string[];
+  style: string[];
+  id: number;
+  master_id: number;
+  master_url: string;
+  uri: string;
+  catno: string;
+  title: string;
+  thumb: string;
+  cover_image: string;
+  resource_url: string;
 }

@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
 
-import { Permises } from '../shared/interfaces/api-response.interface';
 import { User } from '../shared/interfaces/user.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -32,7 +31,6 @@ export class LayoutPageComponent  implements OnInit {
   userActual: User | null = null;
   currentToken: string | null = "";
 
-  permises!: Permises | null;
   displayedColumns!: string[];
 
   constructor ( /* private authService: AuthService, */
@@ -92,7 +90,7 @@ export class LayoutPageComponent  implements OnInit {
   // Método para abrir el perfil de usuario desde la barra superior
   // async openProfile(user: User) {
   //   const dialogRef = this.dialog.open(ProfilePageComponent, { data: user, width: '45vw', height: '80vh', scrollStrategy: this.overlay.scrollStrategies.noop() });
-  //   const RESULT = await dialogRef.afterClosed().toPromise();    
+  //   const RESULT = await dialogRef.afterClosed().toPromise();
   // }
 
   // logOut() {

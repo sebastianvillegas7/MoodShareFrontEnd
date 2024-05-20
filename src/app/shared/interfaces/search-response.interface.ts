@@ -1,7 +1,6 @@
-import { Album } from "./album.interface";
-import { Pagination } from "./pagination.interface";
+import { Pagination } from './pagination.interface';
 
-export interface SearchResponse {
+export interface SearchResponse<T> {
   pagination: Pagination;
-  results: Album[];
+  results: T[];
 }

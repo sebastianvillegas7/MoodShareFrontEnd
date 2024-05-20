@@ -1,8 +1,10 @@
 import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { LastFMService } from 'src/app/services/lasftm.service';
-import { SearchResponseArtist } from 'src/app/shared/interfaces/search-response-artist.interface';
-import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-track.interface';
+import { DiscogsService } from 'src/app/services/discogs.service';
+import { Album } from 'src/app/shared/interfaces/album.interface';
+import { Artist } from 'src/app/shared/interfaces/artist.interface';
+import { SearchResponse } from 'src/app/shared/interfaces/search-response.interface';
+import { Track } from 'src/app/shared/interfaces/track.interface';
 
 @Component({
   selector: 'moodshare-search-page',
@@ -24,7 +26,7 @@ export class SearchPageComponent implements OnInit {
   // Variable de bandera para mostrar u ocultar el botón
   public showLoadMoreBtn: boolean = false;
 
-  constructor(public lastfmService: LastFMService) { }
+  constructor(public discogsService: DiscogsService) { }
 
   ngOnInit(): void { }
 
@@ -33,9 +35,11 @@ export class SearchPageComponent implements OnInit {
     const tipoDeBusqueda = this.searchForm.get('tipoDeBusqueda')!.value;
     const busqueda = this.searchForm.get('busqueda')!.value.trim();
 
-    this.lastfmService.listadoArtists = [];
-    this.lastfmService.listadoTracks = [];
+    this.discogsService.listadoArtists = [];
+    this.discogsService.listadoTracks = [];
     this.listadoAMostrar = [];
+
+    this.paginaActual = 1;
 
     if (!busqueda.trim()) {
       return; // No realizar la búsqueda si el término está vacío
@@ -43,11 +47,11 @@ export class SearchPageComponent implements OnInit {
 
     switch (tipoDeBusqueda) {
       case 'artist':
-        this.lastfmService.getArtistByName(busqueda).subscribe(
-          (respuesta: SearchResponseArtist) => {
+        this.discogsService.getArtistByName(busqueda).subscribe(
+          (respuesta: SearchResponse<Artist>) => {
             // Almacenar los artistas en el servicio
-            this.lastfmService.listadoArtists = [...this.lastfmService.listadoArtists, ...respuesta.results.artistmatches.artist];
-            this.listadoAMostrar = this.lastfmService.listadoArtists;
+            this.discogsService.listadoArtists = [...this.discogsService.listadoArtists, ...respuesta.results];
+            this.listadoAMostrar = this.discogsService.listadoArtists;
             this.showLoadMoreBtn = true;
           },
           error => {
@@ -56,11 +60,11 @@ export class SearchPageComponent implements OnInit {
         );
         break;
       case 'track':
-        this.lastfmService.getTrackByName(busqueda).subscribe(
-          (respuesta: SearchResponseTrack) => {
+        this.discogsService.getTrackByName(busqueda).subscribe(
+          (respuesta: SearchResponse<Track>) => {
             // Almacenar los tracks en el servicio
-            this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...respuesta.results.trackmatches.track];
-            this.listadoAMostrar = this.lastfmService.listadoTracks;
+            this.discogsService.listadoTracks = [...this.discogsService.listadoTracks, ...respuesta.results];
+            this.listadoAMostrar = this.discogsService.listadoTracks;
             this.showLoadMoreBtn = true;
           },
           error => {
@@ -69,7 +73,17 @@ export class SearchPageComponent implements OnInit {
         );
         break;
       case 'album':
-        // this.lastfmService.searchAlbums(searchTerm);
+        this.discogsService.getAlbumByName(busqueda).subscribe(
+          (respuesta: SearchResponse<Album>) => {
+            // Almacenar los tracks en el servicio
+            this.discogsService.listadoAlbums = [...this.discogsService.listadoAlbums, ...respuesta.results];
+            this.listadoAMostrar = this.discogsService.listadoAlbums;
+            this.showLoadMoreBtn = true;
+          },
+          error => {
+            console.error('Error en la solicitud HTTP:', error);
+          }
+        );
         break;
     }
   }

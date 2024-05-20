@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { ListPageComponent } from './pages/list-page/list-page.component';
+import { DefaultImagePipe } from '../shared/pipes/default-image.pipe';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
     HomePageComponent,
     ListPageComponent,
     SearchPageComponent,
-    // DetailPageComponent
+    DefaultImagePipe,
+    DetailPageComponent
   ],
   imports: [
     CommonModule,

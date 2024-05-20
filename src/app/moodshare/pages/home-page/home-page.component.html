@@ -1,10 +1,17 @@
-<div class="row p-3">
+<style>
+  @font-face {
+    font-family: 'Nexa-Heavy';
+    src: url('/assets/fonts/Nexa-Heavy.ttf') format('truetype');
+  }
+</style>
+
+<div class="row">
+  <h2 style="text-align: center; font-family: 'Nexa-Heavy', sans-serif; font-size: 50px; margin-top: 25px;">ÚLTIMOS RELEASES</h2>
   <div class="col-12 d-flex justify-content-center">
-    <list-page [listado]="lastfmService.listadoTracks"></list-page>
+    <list-page [listado]="lastfmService.listadoAlbums"></list-page>
   </div>
 </div>
 
-<!-- Espacio adicional si es necesario -->
 <div class="row">&nbsp;</div>
 
 <!-- Botón para cargar más resultados -->

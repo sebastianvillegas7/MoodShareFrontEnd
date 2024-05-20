@@ -1,35 +1,51 @@
-<div id="contenidoResultados" class="row p-3 justify-content-center align-items-center" style="margin-left: 200px;">
-  <div class="form-container d-flex">
+ <style>
+  @font-face {
+    font-family: 'Nexa-Heavy';
+    src: url('/assets/fonts/Nexa-Heavy.ttf') format('truetype');
+  }
+</style>
+
+<div class="row justify-content-center">
+  <div class="col-12 text-center">
     <form [formGroup]="searchForm">
-    <mat-form-field class="custom-mat-form-field" style="width: 200px;">
-      <mat-label>Selecciona una opción</mat-label>
-      <mat-select formControlName="tipoDeBusqueda">
-        <mat-option value="artist">Artista</mat-option>
-        <mat-option value="track">Track</mat-option>
-        <mat-option value="album">Álbum</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="custom-mat-form-field" style="width: 700px;">
-      <mat-label>Buscar...</mat-label>
-      <input
-        type="text"
-        matInput
-        placeholder="Buscar..."
-        (keydown.enter)="searchItems()"
-        formControlName="busqueda"
-      />
-    </mat-form-field>
-  </form>
+      <mat-form-field style="width: 120px; margin-right: 1px; text-align: center;">
+        <mat-label>Seleccionar</mat-label>
+        <mat-select formControlName="tipoDeBusqueda">
+          <mat-option value="artist">Artista</mat-option>
+          <mat-option value="track">Track</mat-option>
+          <mat-option value="album">Álbum</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 600px;">
+        <mat-label>Buscar...</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Buscar..."
+          (keydown.enter)="searchItems()"
+          formControlName="busqueda"
+        />
+      </mat-form-field>
+    </form>
   </div>
-  <div class="col-12">
-    <list-page [listado]="listadoAMostrar"/>
-  </div>
-  <br>
-  <br>
-  <!-- Botón para cargar más resultados -->
-  <button *ngIf="showLoadMoreBtn" mat-stroked-button color="primary" (click)="loadMore()">Cargar más resultados</button>
-  <br>
-  <br>
-  <br>
 </div>
 
+<div class="row">&nbsp;</div>
+
+
+  <div class="col-16 d-flex justify-content-center">
+    <list-page [listado]="listadoAMostrar"></list-page>
+  </div>
+
+
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+
+
+<!-- Botón para cargar más resultados -->
+<!-- <div class="row justify-content-center">
+  <button mat-stroked-button color="primary" (click)="searchTrending()" style="width: auto;">Cargar más resultados</button>
+</div> -->
+
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>

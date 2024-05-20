@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Movie } from '../shared/interfaces/movie.interface';
 import { Observable, forkJoin, map, of } from 'rxjs';
 import { SearchResponseArtist } from '../shared/interfaces/search-response-artist.interface';
 import { LASTFM_API_HEADERS } from 'src/environments/environment';

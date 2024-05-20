@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 
-import { UsersService } from 'src/app/services/users.service';
+// import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/shared/interfaces/user.interface';
 
 @Component({
@@ -17,7 +17,7 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(
     private snackBar: MatSnackBar,
-    private usersService: UsersService,
+    // private usersService: UsersService,
   ) { }
 
   ngOnInit(): void {
@@ -30,18 +30,18 @@ export class RegisterPageComponent implements OnInit {
   }
 
   async confirmAdd() {
-    if (this.userForm.valid) {
-      const newUser = this.userForm.value as User;
-      const response = await this.usersService.addUser(newUser).toPromise();
-      if (response && response.ok) {
-        console.log(response);
+    // if (this.userForm.valid) {
+    //   const newUser = this.userForm.value as User;
+    //   const response = await this.usersService.addUser(newUser).toPromise();
+    //   if (response && response.ok) {
+    //     console.log(response);
 
-        this.snackBar.open("Usuario creado correctamente.", 'Cerrar', { duration: 5000 });
-      } else {
-        this.snackBar.open("Error al añadir al usuario.", 'Cerrar', { duration: 5000 });
-      }
-    } else {
-      this.snackBar.open('Por favor complete el formulario correctamente', 'Cerrar', { duration: 5000 });
-    }
+    //     this.snackBar.open("Usuario creado correctamente.", 'Cerrar', { duration: 5000 });
+    //   } else {
+    //     this.snackBar.open("Error al añadir al usuario.", 'Cerrar', { duration: 5000 });
+    //   }
+    // } else {
+    //   this.snackBar.open('Por favor complete el formulario correctamente', 'Cerrar', { duration: 5000 });
+    // }
   }
 }
