@@ -28,7 +28,7 @@ export class HomePageComponent implements OnInit {
 
   // Método para buscar los trending charts que se muestran en el home page
   public searchTrending() {
-    this.lastfmService.getTopChartsTracks().subscribe(
+    this.lastfmService.getLastReleases().subscribe(
       (respuesta: SearchResponseTrack) => {
         // Accede a los artistas dentro de la respuesta JSON
         const TRACKS = respuesta.results.trackmatches.track;

@@ -1,3 +1,10 @@
-CLAVE DE LA API LAST FM:
-
+-- CLAVE DE LA API LAST FM:
 7694c5aed3f63cb53857ce738f75a4a8
+
+-- CLAVE API DISCOGS:
+Clave del cliente	IIXssEWDwIUalUqPACGM
+Información secreta del cliente	SXEKOTKEkYThmAqcuoAwwKTOvDKtlwXD
+Petición de autentificador de URL	https://api.discogs.com/oauth/request_token
+Autorizar URL	https://www.discogs.com/es/oauth/authorize
+Acceso al símbolo URL	https://api.discogs.com/oauth/access_token
+

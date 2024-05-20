@@ -23,10 +23,26 @@ export const environment = {
 export const URL_API_LASTFM = 'http://ws.audioscrobbler.com/2.0/';
 export const API_KEY_LASTFM = '7694c5aed3f63cb53857ce738f75a4a8';
 
-// Cabeceras para las solicitudes HTTP a la API de películas
+
+// Cabeceras para las solicitudes HTTP
 export const LASTFM_API_HEADERS = {
   headers: {
     'Authorization': `Bearer ${API_KEY_LASTFM}`,
+    'accept': 'application/json'
+  }
+};
+
+
+
+// API DISCOGS
+export const URL_API_DISCOGS = 'https://api.discogs.com/';
+export const DISCOGS_KEY = 'IIXssEWDwIUalUqPACGM';
+export const DISCOGS_SECRET = 'SXEKOTKEkYThmAqcuoAwwKTOvDKtlwXD';
+
+// Cabeceras para las solicitudes HTTP
+export const DISCOGS_API_HEADERS = {
+  headers: {
+    'Authorization': `Discogs key=${DISCOGS_KEY}, secret=${DISCOGS_SECRET}`,
     'accept': 'application/json'
   }
 };
