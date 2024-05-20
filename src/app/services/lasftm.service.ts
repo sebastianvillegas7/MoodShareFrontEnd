@@ -20,10 +20,11 @@ export class LastFMService {
   constructor(private http: HttpClient) { }
 
   // Método para buscar los trending charts que se muestran en el home page
-  getTopChartsTracks(): Observable<SearchResponseTrack> {    
+  getTopChartsTracks(): Observable<SearchResponseTrack> {
     // https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=YOUR_API_KEY&format=json
-    return this.http.get<SearchResponseTrack>(`${URL_API_LASTFM}?method=chart.gettoptracks&api_key=${API_KEY_LASTFM}&format=json`);
-    
+    // return this.http.get<SearchResponseTrack>(`${URL_API_LASTFM}?method=chart.gettoptracks&api_key=${API_KEY_LASTFM}&format=json`);
+    return this.http.get<SearchResponseTrack>(`${URL_API_LASTFM}?method=track.search&track=ki&api_key=${API_KEY_LASTFM}&format=json`); // TODO: randomear
+
   }
 
 
@@ -79,6 +80,6 @@ export class LastFMService {
   // getInfoAlbum(nameAlbum: string): Observable<SearchResponseAlbum> {
     // https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher&api_key=YOUR_API_KEY&format=json
     // return this.http.get<SearchResponseAlbum>(`${URL_API_LASTFM}?method=artist.getinfo&artist=${nameAlbum}&api_key=${API_KEY_LASTFM}&format=json`);
-  }
+  // }
 }
 

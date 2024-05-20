@@ -11,6 +11,8 @@ import { SearchResponseTrack } from 'src/app/shared/interfaces/search-response-t
 })
 
 export class SearchPageComponent implements OnInit {
+  public listadoAMostrar: any[] = []; // listado a mostrar
+
   // Formulario para controlar los cambios del input
   public searchForm: FormGroup = new FormGroup({
     tipoDeBusqueda: new FormControl('artist'), // Valor por defecto
@@ -32,6 +34,8 @@ export class SearchPageComponent implements OnInit {
     const busqueda = this.searchForm.get('busqueda')!.value.trim();
 
     this.lastfmService.listadoArtists = [];
+    this.lastfmService.listadoTracks = [];
+    this.listadoAMostrar = [];
 
     if (!busqueda.trim()) {
       return; // No realizar la búsqueda si el término está vacío
@@ -43,6 +47,7 @@ export class SearchPageComponent implements OnInit {
           (respuesta: SearchResponseArtist) => {
             // Almacenar los artistas en el servicio
             this.lastfmService.listadoArtists = [...this.lastfmService.listadoArtists, ...respuesta.results.artistmatches.artist];
+            this.listadoAMostrar = this.lastfmService.listadoArtists;
             this.showLoadMoreBtn = true;
           },
           error => {
@@ -55,6 +60,7 @@ export class SearchPageComponent implements OnInit {
           (respuesta: SearchResponseTrack) => {
             // Almacenar los tracks en el servicio
             this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...respuesta.results.trackmatches.track];
+            this.listadoAMostrar = this.lastfmService.listadoTracks;
             this.showLoadMoreBtn = true;
           },
           error => {
@@ -64,8 +70,6 @@ export class SearchPageComponent implements OnInit {
         break;
       case 'album':
         // this.lastfmService.searchAlbums(searchTerm);
-        break;
-      default:
         break;
     }
   }

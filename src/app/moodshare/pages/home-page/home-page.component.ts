@@ -21,25 +21,28 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     // this.usersService.setUserByToken();
     this.searchTrending();
+
+
   }
 
 
   // Método para buscar los trending charts que se muestran en el home page
   public searchTrending() {
     this.lastfmService.getTopChartsTracks().subscribe(
-      (respuesta: SearchResponseTrack) => {  
+      (respuesta: SearchResponseTrack) => {
         // Accede a los artistas dentro de la respuesta JSON
         const TRACKS = respuesta.results.trackmatches.track;
-  
+
         // Almacena los tracks en la variable 'listadoTracks' del servicio
-        this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...TRACKS];        
+        this.lastfmService.listadoTracks = [...this.lastfmService.listadoTracks, ...TRACKS];
+        console.log(this.lastfmService.listadoTracks);
       },
       error => {
         console.error('Error en la solicitud HTTP:', error);
       }
     );
   }
-  
+
 }
 
 // artistas.forEach(artist => {
@@ -54,7 +57,7 @@ export class HomePageComponent implements OnInit {
 //         // Agregamos la URL de la imagen al objeto del artista
 //         artist.imageUrl = imageUrl;
 //         console.log(imageUrl);
-        
+
 
 //         // Agregamos el artista con la imagen al listado
 //         this.listadoArtists.push(artist);
