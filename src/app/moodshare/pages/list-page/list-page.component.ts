@@ -13,7 +13,6 @@ export class ListPageComponent {
   public listado: any[] = [];
 
   constructor( private router: Router,
-               private discogsService: DiscogsService,
    ) { }
 
   ngOnInit(): void {
@@ -24,7 +23,7 @@ export class ListPageComponent {
     this.listado = listado;
   }
 
-  verDetalle(resourceUrl: string) {
-    this.router.navigate(['/detail'], { state: { resourceUrl } });
+  verDetalle(resourceUrl: string, type: string) {
+    this.router.navigate(['/detail'], { state: { resourceUrl, type } });
   }
 }

@@ -9,6 +9,40 @@ import { DiscogsService } from 'src/app/services/discogs.service';
   styleUrls: ['./detail-page.component.css'],
 })
 export class DetailPageComponent implements OnInit {
+  resourceUrl: string = "";
+  type: string = "";
+  resourceData: any;
+
+  constructor(private router: Router,
+    public discogsService: DiscogsService,
+  ) { }
+
+  ngOnInit(): void {
+    this.resourceUrl = history.state.resourceUrl;
+    this.type = history.state.type;
+
+    this.discogsService.getResourceDataByUrl(this.resourceUrl).subscribe(
+      (respuesta) => {
+        if (!respuesta) return this.router.navigate(['/home']);
+
+        this.resourceData = respuesta;
+        this.getReleases(respuesta.id);
+
+        return;
+      });
+  }
+
+  getReleases(artistId: number): void {
+    this.discogsService.getArtistReleases(artistId).subscribe(
+      (data) => {
+        this.discogsService.listadoReleases = data.releases;
+      },
+      (error) => {
+        console.error('Error', error);
+      }
+    );
+  }
+
   // public movieData?: any;
   // displayedColumns: string[] = ['category', 'value'];
 
@@ -21,46 +55,25 @@ export class DetailPageComponent implements OnInit {
   // userActual: User | null = null;
   // id_user_Actual: any;
   // currentToken: string | null = "";
-    resourceUrl: string = "";
-    resourceData: any;
-
-    constructor(private router: Router,
-                private discogsService: DiscogsService) { }
-
-    ngOnInit(): void {
-      this.resourceUrl = history.state.resourceUrl;
-
-      this.discogsService.getResourceByUrl(this.resourceUrl).subscribe(
-        (respuesta) => {
-              if (!respuesta) return this.router.navigate(['/home']);
-
-              this.resourceData = respuesta;
-              console.log(this.resourceData);
-
-              return;
-            });
-
-    }
-
 
   // ngOnInit(): void {
-    // this.getUserPorToken();
+  // this.getUserPorToken();
 
-    // // Obtiene el ID de la película de los parámetros de la URL
-    // const id = this.activatedRoute.snapshot.paramMap.get('id');
-    // // Verificar si id es null antes de usarlo
-    // if (id !== null) {
-    //   this.id_movie_actual = id
-    //   this.comprobarSiEsFavorita(this.id_movie_actual);
+  // // Obtiene el ID de la película de los parámetros de la URL
+  // const id = this.activatedRoute.snapshot.paramMap.get('id');
+  // // Verificar si id es null antes de usarlo
+  // if (id !== null) {
+  //   this.id_movie_actual = id
+  //   this.comprobarSiEsFavorita(this.id_movie_actual);
 
-    //   this.movieService.getMovieByID(this.id_movie_actual).subscribe(
-    //   (respuesta) => {
-    //     if (!respuesta) return this.router.navigate(['/movies/home']);
+  //   this.movieService.getMovieByID(this.id_movie_actual).subscribe(
+  //   (respuesta) => {
+  //     if (!respuesta) return this.router.navigate(['/movies/home']);
 
-    //     this.movieData = respuesta;
-    //     return;
-    //   });
-    // }
+  //     this.movieData = respuesta;
+  //     return;
+  //   });
+  // }
   // }
 
   // Método para obtener el usuario a partir del token
@@ -153,14 +166,14 @@ export class DetailPageComponent implements OnInit {
     // }
   }
 
-  quitarFavoritaPorIdMovie(id_movie: number | string ) {
-  //   const id_fav = this.idMovieToFavMap[id_movie];
-  //   if (id_fav) {
-  //     this.quitarFavorita(id_fav);
-  //   }
-  // }
+  quitarFavoritaPorIdMovie(id_movie: number | string) {
+    //   const id_fav = this.idMovieToFavMap[id_movie];
+    //   if (id_fav) {
+    //     this.quitarFavorita(id_fav);
+    //   }
+    // }
 
-  // goBack(): void {
-  //   this.router.navigate(['/movies/home'])
+    // goBack(): void {
+    //   this.router.navigate(['/movies/home'])
   }
 }

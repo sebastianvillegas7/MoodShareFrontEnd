@@ -1,3 +1,5 @@
+import { Artist } from "./artist.interface";
+
 export interface Track {
   country: string;
   year: string;
@@ -14,4 +16,5 @@ export interface Track {
   thumb: string;
   cover_image: string;
   resource_url: string;
+  extraartists?: Artist[];
 }

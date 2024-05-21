@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
 
     this.lastfmService.getLastReleases().subscribe(
       (respuesta: SearchResponse<Album>) => {
-        // Accede a los artistas dentro de la respuesta JSON
+        // Accede a los Albums dentro de la respuesta JSON
         const ALBUMS_TREND = respuesta.results;
 
         // Almacena los tracks en la variable 'listadoTracks' del servicio

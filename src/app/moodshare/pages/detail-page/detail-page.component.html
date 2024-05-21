@@ -1,24 +1,86 @@
-<div>
-  <h1>{{ resourceData?.title }}</h1>
-  <img *ngIf="resourceData?.images" [src]="resourceData?.images[0].resource_url" alt="{{ resourceData?.title }}">
-  <p>Year: {{ resourceData?.year }}</p>
-  <p>Genres: {{ resourceData?.genres.join(', ') }}</p>
-  <p>Styles: {{ resourceData?.styles.join(', ') }}</p>
-  <p>Data Quality: {{ resourceData?.data_quality }}</p>
-  <!-- Agrega más campos según necesites -->
-</div>
-
-
-<!-- <head>
+<head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
+
+<div class="movie-details-container">
+  <h1>{{ resourceData?.title || resourceData?.name }}</h1>
+  <img *ngIf="resourceData?.images" [src]="resourceData?.images[0].resource_url"
+    alt="{{ resourceData?.title || resourceData?.name }}">
+
+  <!-- Artist -->
+  <div *ngIf="type === 'artists'">
+    <!-- <p><strong>ID:</strong> {{ resourceData?.id }}</p> -->
+    <p><strong>Name: </strong>{{ resourceData?.name }}</p>
+    <p><strong>Real Name: </strong>{{ resourceData?.realname }}</p>
+    <p><strong>Website: </strong><a href="{{ resourceData?.urls[0] }}">{{ resourceData?.urls[0] }}</a></p>
+    <p><strong>Profile: </strong> {{ resourceData?.profile }}</p>
+    <p *ngIf="resourceData?.members"><strong>Members:</strong></p>
+    <ul>
+      <li *ngFor="let members of resourceData?.members">{{ members.name }}</li>
+    </ul>
+    <p *ngIf="resourceData?.groups"><strong>Groups:</strong></p>
+    <ul>
+      <li *ngFor="let group of resourceData?.groups">{{ group.name }}</li>
+    </ul>
+    <p *ngIf="discogsService.listadoReleases"><strong>Releases:</strong></p>
+    <ul>
+      <li *ngFor="let release of discogsService.listadoReleases">{{ release.title }} ({{ release.year }})</li>
+    </ul>
+    <!-- <p><strong>URI:</strong> <a [href]="resourceData?.uri" target="_blank">{{ resourceData?.uri }}</a></p> -->
+  </div>
+
+  <!-- Track o Album -->
+  <div *ngIf="type === 'release' || type === 'master'">
+    <p><strong>Title: </strong> {{ resourceData?.title }}</p>
+    <!-- <p><strong>Artist(s): </strong> {{ resourceData?.artists.name.join('- ') }}</p> -->
+    <p><strong>Year: </strong> {{ resourceData?.year || resourceData?.released }}</p>
+    <p><strong>Genres: </strong> {{ resourceData?.genres?.join(', ') }}</p>
+    <p *ngIf="resourceData?.styles"><strong>Styles: </strong> {{ resourceData?.styles?.join(', ') }}</p>
+    <!-- <p><strong>URI:</strong> <a [href]="resourceData?.uri" target="_blank">{{ resourceData?.uri }}</a></p> -->
+  </div>
+
+  <!-- Tracklist -->
+  <div *ngIf="resourceData.tracklist?.length > 0">
+    <h3><strong>Tracklist: </strong></h3>
+    <ul>
+      <li *ngFor="let track of resourceData.tracklist">
+        <span>{{ track.title }}</span> <span *ngIf="track.duration"> ({{ track.duration }})</span>
+        <span *ngIf="track.extraartists?.length"> - {{ track.extraartists[0]?.name }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="movie-details-container">
+  <h1>{{ resourceData?.title || resourceData?.name }}</h1>
+  <h1>TYPE: {{ resourceData?.type }}</h1>
+  <img *ngIf="resourceData?.images" [src]="resourceData?.images[0].resource_url" alt="{{ resourceData?.title }}">
+  <p>Year: {{ resourceData?.year }}</p>
+  <p>Genres: {{ resourceData?.genres }}</p>
+  <p>Styles: {{ resourceData?.styles }}</p>
+  <p>Data Quality: {{ resourceData?.data_quality }}</p>
+</div> -->
+
+
+<!--
 <div *ngIf="movieData" class="movie-details-container">
 
   <div class="movie-background-image" [style.background-image]="'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(https://image.tmdb.org/t/p/original' + movieData.backdrop_path + ')'"></div>
 
-  <div class="movie-content">
+  <div >
 
     <img
       class="movie-poster"

@@ -15,6 +15,7 @@ export class DiscogsService {
   public listadoArtists: Artist[] = [];
   public listadoTracks: Track[] = [];
   public listadoAlbums: Album[] = [];
+  public listadoReleases: any[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -53,9 +54,14 @@ export class DiscogsService {
     return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}database//search?release_title=${busquedaTrim}&per_page=20&page=1`, DISCOGS_API_HEADERS);
   }
 
-  /******************** RESOURCE ********************/
-  getResourceByUrl(resourceUrl: string): Observable<any> {
+  /******************** RESOURCE DATA ********************/
+  getResourceDataByUrl(resourceUrl: string): Observable<any> {
     return this.http.get<any>(resourceUrl, DISCOGS_API_HEADERS);
+  }
+
+  /******************** ARTIST RELEASES ********************/
+  getArtistReleases(artistId: number): Observable<any> {
+    return this.http.get<any>(`${URL_API_DISCOGS}artists/${artistId}/releases`, DISCOGS_API_HEADERS);
   }
 }
 
