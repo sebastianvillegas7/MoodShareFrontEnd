@@ -1,0 +1,71 @@
+.moodshare-details-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.moodshare-background-image {
+  position: absolute;
+  border-radius: 40px;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ancho al 100% para cubrir todo el contenedor */
+  height: 800px; /* Mantén la altura deseada */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7);
+  z-index: -1;
+  overflow: hidden;
+  mask-image: linear-gradient(to top, transparent 1%, rgb(35, 35, 35));
+}
+
+.moodshare-content h1 {
+  margin-top: 25px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.moodshare-content {
+  width: 90%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column; /* Cambio a columna para apilar el contenido */
+
+  margin: 0 auto; /* Centrar horizontalmente */
+  box-sizing: border-box;
+  min-height: 800px; /* Cambio mínimo de altura para ajustar al contenido */
+}
+
+
+
+.moodshare-info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.moodshare-info img {
+  width: 20%;
+  height: 20%;
+
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.moodshare-info-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Apilar el contenido */
+}
+
+.moodshare-info-details p {
+  margin-bottom: 2px; /* Espacio entre los elementos de texto */
+}
+
+.moodshare-info-details ul {
+  padding: 0; /* Eliminar relleno de las listas */
+  margin-left: 40px;
+}

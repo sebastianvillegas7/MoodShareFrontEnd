@@ -23,7 +23,7 @@ export class DiscogsService {
   getLastReleases(): Observable<SearchResponse<Album>> {
     // https://api.discogs.com/database/search?type=release&sort=year,desc&per_page=20&page=1
     let randomPage = Math.floor(Math.random() * 10) + 1;
-    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}database/search?type=release&sort=year,desc&per_page=2&page=${randomPage}`, DISCOGS_API_HEADERS);
+    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}database/search?type=release&sort=year,desc&per_page=20&page=${randomPage}`, DISCOGS_API_HEADERS);
   }
 
   /******************** ARTIST ********************/

@@ -26,8 +26,9 @@ export class DetailPageComponent implements OnInit {
         if (!respuesta) return this.router.navigate(['/home']);
 
         this.resourceData = respuesta;
-        this.getReleases(respuesta.id);
-
+        if (this.type == 'artist') {
+          this.getReleases(respuesta.id);
+        }
         return;
       });
   }

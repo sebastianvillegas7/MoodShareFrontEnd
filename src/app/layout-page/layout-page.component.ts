@@ -13,7 +13,7 @@ import { MatSort } from '@angular/material/sort';
 
 
 @Component({
-  selector: 'movies-layout-page',
+  selector: 'moodshare-layout-page',
   templateUrl: './layout-page.component.html',
   styleUrls: [ './layout-page.component.css' ]
 })

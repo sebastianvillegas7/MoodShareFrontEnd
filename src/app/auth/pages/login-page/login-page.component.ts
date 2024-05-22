@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+// import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
   @ViewChild('passwordInput') passwordInput!: ElementRef;
 
   constructor(
-    private authService: AuthService,
+    // private authService: AuthService,
     private router: Router,
     private cookieService: CookieService,
     private snackBar: MatSnackBar,
@@ -44,34 +44,34 @@ export class LoginPageComponent implements OnInit {
   }
 
   async acceder() {
-    if (this.loginForm.valid) {
-      const data = this.loginForm.value;
-      const RESPONSE = await this.authService.doLogin(data).toPromise();
+    // if (this.loginForm.valid) {
+    //   const data = this.loginForm.value;
+      // const RESPONSE = await this.authService.doLogin(data).toPromise();
 
-      if (RESPONSE) {
-        if (RESPONSE.ok) {
-          if (RESPONSE.data.token) {
-            localStorage.setItem('token', RESPONSE.data.token);
-            localStorage.setItem('usuario', RESPONSE.data.usuario);
-            localStorage.setItem('nombre_publico', RESPONSE.data.nombre_publico);
-            localStorage.setItem('ultimaOpcion', RESPONSE.data.opcion);
-            localStorage.setItem('ultimoGrupo', RESPONSE.data.grupo);
-            localStorage.setItem('id_rol', RESPONSE.data.id_rol);
-            localStorage.setItem('id_usuario', RESPONSE.data.id_usuario);
-            this.commonService.headers = new HttpHeaders({
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${RESPONSE.data.token}`
-            });
-            console.log(localStorage['nombre_publico']);
-            this.router.navigate([`/movies/home`]);
-          } else if (RESPONSE.data.valido === 0) {
-            this.snackBar.open('Usuario inhabilitado', 'Cerrar', { duration: 5000 });
-          } else if (RESPONSE.data.valido === 1) {
-            this.snackBar.open('Usuario o contraseña incorrectas', 'Cerrar', { duration: 5000 });
-          }
-        }
-      }
-    }
+      // if (RESPONSE) {
+    //     if (RESPONSE.ok) {
+    //       if (RESPONSE.data.token) {
+    //         localStorage.setItem('token', RESPONSE.data.token);
+    //         localStorage.setItem('usuario', RESPONSE.data.usuario);
+    //         localStorage.setItem('nombre_publico', RESPONSE.data.nombre_publico);
+    //         localStorage.setItem('ultimaOpcion', RESPONSE.data.opcion);
+    //         localStorage.setItem('ultimoGrupo', RESPONSE.data.grupo);
+    //         localStorage.setItem('id_rol', RESPONSE.data.id_rol);
+    //         localStorage.setItem('id_usuario', RESPONSE.data.id_usuario);
+    //         this.commonService.headers = new HttpHeaders({
+    //           'Content-Type': 'application/json',
+    //           Authorization: `Bearer ${RESPONSE.data.token}`
+    //         });
+    //         console.log(localStorage['nombre_publico']);
+    //         // this.router.navigate([`/movies/home`]);
+    //       } else if (RESPONSE.data.valido === 0) {
+    //         this.snackBar.open('Usuario inhabilitado', 'Cerrar', { duration: 5000 });
+    //       } else if (RESPONSE.data.valido === 1) {
+    //         this.snackBar.open('Usuario o contraseña incorrectas', 'Cerrar', { duration: 5000 });
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   forgotPassword() {

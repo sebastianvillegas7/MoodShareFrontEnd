@@ -46,18 +46,30 @@
 }
 
 .footer {
-  background-color: #a9aaab91; /* Color de fondo del footer */
+  background-color: #a9aaab56; /* Color de fondo del footer */
   /* padding: 10px; */
   position: fixed; /* Fija el footer en la parte inferior */
   width: 100%; /* Ancho completo del footer */
   height: 20px;
   bottom: 0; /* Alinea el footer en la parte inferior */
-}
-
-.footer {
-  display: none;
+  text-align: center;
+  font-size: small;
+  text-shadow: 1px 1px black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .footer.show {
   display: block;
 }
+
+.contenedor {
+  margin-top: 80px;
+  width: 94%; /* Ajustar el ancho al 100% para que ocupe todo el ancho disponible */
+  max-width: none; /* Eliminar el límite máximo de ancho */
+  max-height: none;
+  padding-right: 0; /* Eliminar cualquier relleno en el lado derecho */
+  padding-left: 0; /* Eliminar cualquier relleno en el lado izquierdo */
+  margin-right: auto;
+  margin-left: auto;
+}
+
