@@ -15,22 +15,9 @@ export const environment = {
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
-// API SGE PARA LOGIN
-// export const URL_BASE_SGE = 'http://143.47.48.255/dev';
-// export const URL_API_SGE = `${URL_BASE_SGE}/api/private`;
-
-// API LAST.fm
-export const URL_API_LASTFM = 'http://ws.audioscrobbler.com/2.0/';
-export const API_KEY_LASTFM = '7694c5aed3f63cb53857ce738f75a4a8';
-
-
-// Cabeceras para las solicitudes HTTP
-export const LASTFM_API_HEADERS = {
-  headers: {
-    'Authorization': `Bearer ${API_KEY_LASTFM}`,
-    'accept': 'application/json'
-  }
-};
+// API BACKEND SPRINGBOOT
+export const URL_BASE_BACKEND = 'http://localhost:8080';
+export const URL_API_BACKEND = `${URL_BASE_BACKEND}/api/users`;
 
 
 

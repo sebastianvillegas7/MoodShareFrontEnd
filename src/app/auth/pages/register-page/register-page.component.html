@@ -1,4 +1,27 @@
-<head>
+<form (ngSubmit)="register()">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" [(ngModel)]="name" name="name" required>
+  </div>
+  <div>
+    <label for="apellido">Apellido</label>
+    <input type="text" [(ngModel)]="apellido" name="apellido" required>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" [(ngModel)]="email" name="email" required>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+  </div>
+  <button type="submit">Register</button>
+</form>
+
+
+
+
+<!-- <head>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
@@ -49,4 +72,4 @@
       </form>
     </mat-card-content>
   </mat-card>
-</div>
+</div> -->

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_KEY_LASTFM, DISCOGS_API_HEADERS, URL_API_DISCOGS, URL_API_LASTFM } from 'src/environments/environment';
+import { DISCOGS_API_HEADERS, URL_API_DISCOGS } from 'src/environments/environment';
 import { Artist } from '../shared/interfaces/artist.interface';
 import { Track } from '../shared/interfaces/track.interface';
 import { SearchResponse } from '../shared/interfaces/search-response.interface';

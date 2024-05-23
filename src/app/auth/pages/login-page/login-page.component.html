@@ -5,20 +5,20 @@
   <mat-card>
     <mat-card-content>
       <h2>{{ titulo }}</h2>
-      <form [formGroup]="loginForm" (ngSubmit)="acceder()">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="signin-content">
           <mat-form-field class="full-width-input">
-            <input matInput formControlName="username" placeholder="Correo electrónico" (keydown.enter)="onUsernameEnter()" />
-            <mat-error *ngIf="loginForm.get('username')?.hasError('email')">
+            <input matInput formControlName="email" placeholder="Correo electrónico"/>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
               Ingrese una email válido
           </mat-error>
           </mat-form-field>
-          <mat-form-field class="full-width-input" *ngIf="usernameEntered">
+          <mat-form-field class="full-width-input">
             <input #passwordInput matInput type="password" formControlName="password" placeholder="Contraseña" />
           </mat-form-field>
         </div>
         <div class="mat-card-actions" >
-          <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid || showSpinner"
+          <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid"
             style="font-size: 15px; padding: 25px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
               <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
