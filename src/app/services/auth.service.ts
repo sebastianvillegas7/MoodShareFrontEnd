@@ -18,7 +18,7 @@ export class AuthService {
 
   // Método para registrar un nuevo usuario
   register(userData: { name: string, apellido: string, email: string, password: string }): Observable<any> {
-    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/api/register`, userData);
+    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/api/registro`, userData);
   }
 
   login(credentials: { email: string, password: string }): Observable<any> {
