@@ -39,6 +39,8 @@ export class LoginPageComponent implements OnInit {
       if (RESPONSE.token) {
         this.router.navigate([`/moodshare/home`]);
         this.snackBar.open('¡Bienvenido!', 'Cerrar', { duration: 5000 });
+
+        this.authService.userActual = data.email;
       } else {
         this.snackBar.open('Usuario o contraseña incorrectas', 'Cerrar', { duration: 5000 });
       }

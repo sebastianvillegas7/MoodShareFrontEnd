@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  userActual: string = "";
+
   constructor(
     private httpClient: HttpClient,
     private router: Router,
@@ -24,7 +26,10 @@ export class AuthService {
       .pipe(
         tap(response => {
           if (response && response.token) {
+            this.userActual = credentials.email;
             this.guardarToken(response.token);
+            console.log("user actual" + this.userActual);
+
           }
         })
       );
