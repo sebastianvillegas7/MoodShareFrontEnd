@@ -24,6 +24,6 @@ export class ListPageComponent {
   }
 
   verDetalle(resourceUrl: string, type: string) {
-    this.router.navigate(['/detail'], { state: { resourceUrl, type } });
+    this.router.navigate(['/moodshare/detail'], { state: { resourceUrl, type } });
   }
 }

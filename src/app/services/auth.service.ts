@@ -3,42 +3,46 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { URL_BASE_BACKEND } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router,
+  ) { }
 
   // Método para registrar un nuevo usuario
   register(userData: { name: string, apellido: string, email: string, password: string }): Observable<any> {
-    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/register`, userData);
+    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/api/register`, userData);
   }
 
   login(credentials: { email: string, password: string }): Observable<any> {
-    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/login`, credentials)
+    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/api/login`, credentials)
       .pipe(
         tap(response => {
           if (response && response.token) {
-            this.saveToken(response.token); // Guarda el token cuando se recibe la respuesta
+            this.guardarToken(response.token);
           }
         })
       );
   }
 
-  saveToken(token: string): void {
-    localStorage.setItem('accessToken', token); // Método para guardar el token en el almacenamiento local
+  guardarToken(token: string): void {
+    localStorage.setItem('token', token);
   }
 
   logout(): void {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('token');
   }
 
-  getAccessToken(): string | null {
-    return localStorage.getItem('accessToken');
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
   isAuthenticated(): boolean {
-    return !!this.getAccessToken();
+    return !!this.getToken();
   }
 }

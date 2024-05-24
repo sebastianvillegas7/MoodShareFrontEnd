@@ -33,12 +33,14 @@ import { AuthModule } from './auth/auth.module';
   exports: [
     // ProfilePageComponent // agregado
   ],
-  providers: [AuthService,
+  providers: [
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

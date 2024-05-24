@@ -5,8 +5,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 
 const routes: Routes = [
       { path: 'login', component: LoginPageComponent },
-      { path: 'register', component: RegisterPageComponent },
-      { path: '**', redirectTo: 'login' },
+      { path: 'registro', component: RegisterPageComponent }
 ];
 
 @NgModule({

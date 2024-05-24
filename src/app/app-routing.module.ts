@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
-// import { AuthGuardService as AuthGuard } from './guards/auth.guard';
-// import { cantActivateGuard } from './guards/reverse.guard';
-// import { ReverseAuthGuard } from './guards/reverse.guard';
 
 const routes: Routes = [
   {
@@ -19,11 +16,11 @@ const routes: Routes = [
         path: 'moodshare',
         loadChildren: () => import('./moodshare/moodshare.module').then(m => m.MoodShareModule),
       },
-      {
-        path: '**',
-        redirectTo: '',
-        pathMatch: 'full'
-      },
+      // {
+      //   path: '**',
+      //   redirectTo: '',
+      //   pathMatch: 'full'
+      // },
     ]
   },
   {

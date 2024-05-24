@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MoodShareRoutingModule } from './moodshare-routing.module';
-// import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { LayoutPageComponent } from '../layout-page/layout-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MaterialModule } from '../material/material.module';
