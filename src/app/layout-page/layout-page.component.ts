@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-// import { ProfilePageComponent } from '../users/profile-page/profile-page.component';
+import { ProfilePageComponent } from '../users/profile-page/profile-page.component';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
 
@@ -61,16 +61,20 @@ export class LayoutPageComponent implements OnInit {
 
 
   // TODO: Método para obtener el PERFIL del usuario
-  async getUser() {
+  // async getUser() {
+  //   console.log("user service: " + this.usersService.currentUser!.email);
 
-    // console.log("layout" + this.authService.userActual);
-  }
+  //   this.openProfile(this.usersService.currentUser!);
+  //   // console.log("layout" + this.authService.userActual);
+  // }
 
   // Método para abrir el perfil de usuario desde la barra superior
-  // async openProfile(user: User) {
-  //   const dialogRef = this.dialog.open(ProfilePageComponent, { data: user, width: '45vw', height: '80vh', scrollStrategy: this.overlay.scrollStrategies.noop() });
-  //   const RESULT = await dialogRef.afterClosed().toPromise();
-  // }
+  async openProfile() {
+    this.usersService.setUserById();
+    const USER: User = this.usersService.currentUser!
+    const dialogRef = this.dialog.open(ProfilePageComponent, { data: USER, width: '45vw', height: '80vh', scrollStrategy: this.overlay.scrollStrategies.noop() });
+    const RESULT = await dialogRef.afterClosed().toPromise();
+  }
 
   logOut() {
     this.authService.logout();

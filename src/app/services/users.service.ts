@@ -20,12 +20,18 @@ export class UsersService {
 
   }
 
+  getUserById(id_usuario: number | string) {
+    return this.httpClient.get<any>(`${URL_API_BACKEND}/${id_usuario}`);
+  }
+
   async setUserById() {
     let id_usuario = localStorage.getItem('id_usuario');
     try {
       if (id_usuario) {
         const RESPONSE = await this.getUserById(id_usuario).toPromise();
+
         if (RESPONSE) {
+          console.log("RESPONSE EN SERVICE: " + RESPONSE.id_usuario);
           this.currentUser = RESPONSE as User;
         } else {
           console.error('No se pudo obtener el usuario por el id.');
@@ -63,8 +69,4 @@ export class UsersService {
   // deleteUser(id_usuario: number) {
   //   return this.http.delete<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php?id_usuario=${id_usuario}`, { headers: this.commonService.headers });
   // }
-
-  getUserById(id_usuario: number | string) {
-    return this.httpClient.get<User>(`${URL_API_BACKEND}/${id_usuario}`);
-  }
 }

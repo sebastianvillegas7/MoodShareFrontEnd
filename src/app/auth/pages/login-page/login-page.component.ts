@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'login-page',
@@ -14,10 +15,12 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
+    private usersService: UsersService
   ) { }
 
   ngOnInit() {
@@ -40,7 +43,7 @@ export class LoginPageComponent implements OnInit {
         if (RESPONSE.token) {
           this.router.navigate([`/moodshare/home`]);
           this.snackBar.open('¡Bienvenido!', 'Cerrar', { duration: 6000 });
-
+          this.usersService.setUserById();
           // this.authService.userActual = data.email;
         }
       } catch (error: any) {

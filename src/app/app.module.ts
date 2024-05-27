@@ -12,8 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthModule } from './auth/auth.module';
-// import { UsersModule } from './users/users.module';
-// import { ProfilePageComponent } from './users/profile-page/profile-page.component';
+import { UsersModule } from './users/users.module';
+import { ProfilePageComponent } from './users/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,11 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     MatIconModule,
     MatDialogModule,
-    AuthModule
-    // UsersModule // agregado
+    AuthModule,
+    UsersModule // agregado
   ],
   exports: [
-    // ProfilePageComponent // agregado
+    ProfilePageComponent // agregado
   ],
   providers: [
     AuthService,

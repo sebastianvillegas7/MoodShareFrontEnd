@@ -4,7 +4,7 @@ export interface User {
   apellido: string;
   email: string;
   password: string;
-  roles?: string[];
+  roles?: any[];
   token_sesion?: string | null;
   // lista_fav: string | null;
 }

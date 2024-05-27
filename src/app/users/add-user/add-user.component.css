@@ -1,0 +1,25 @@
+.container {
+  margin: 0 auto;
+  width: 550px !important; /* Establece el ancho */
+  justify-content: center;
+  text-align: center;
+  padding-top: 10px;
+  height: 480px;
+}
+
+.mat-form-field {
+  width: 100% !important; /* Ajusta el ancho de los campos de formulario */
+  max-width: 550px !important; /* Establece un ancho máximo */
+  margin: 0 auto 20px auto !important; /* Centra horizontalmente los campos de formulario y agrega margen en la parte inferior */
+}
+
+.custom-mat-form-field {
+  width: 80%; /*Ancho del campo de búsqueda */
+}
+
+.buttons {
+  width: auto;
+  justify-content: center;
+  display: inline;
+  margin: auto;
+}

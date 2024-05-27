@@ -13,11 +13,11 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     public discogsService: DiscogsService,
-    public usersService: UsersService,
+    // public usersService: UsersService,
     ) { }
 
   ngOnInit(): void {
-    this.usersService.setUserById();
+
     this.searchTrending();
   }
 

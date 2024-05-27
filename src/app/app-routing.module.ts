@@ -16,6 +16,10 @@ const routes: Routes = [
         path: 'moodshare',
         loadChildren: () => import('./moodshare/moodshare.module').then(m => m.MoodShareModule),
       },
+      {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+      },
       // {
       //   path: '**',
       //   redirectTo: '',
