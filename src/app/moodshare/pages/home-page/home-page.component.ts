@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DiscogsService } from 'src/app/services/discogs.service';
+import { UsersService } from 'src/app/services/users.service';
 import { Album } from 'src/app/shared/interfaces/album.interface';
 import { SearchResponse } from 'src/app/shared/interfaces/search-response.interface';
 
@@ -12,11 +13,11 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     public discogsService: DiscogsService,
-    // public usersService: UsersService,
+    public usersService: UsersService,
     ) { }
 
   ngOnInit(): void {
-    // this.usersService.setUserByToken();
+    this.usersService.setUserById();
     this.searchTrending();
   }
 

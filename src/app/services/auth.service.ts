@@ -4,16 +4,18 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { URL_BASE_BACKEND } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  userActual: string = "";
+  // userActual: string = "";
 
   constructor(
     private httpClient: HttpClient,
     private router: Router,
+    private usersService: UsersService,
   ) { }
 
   // Método para registrar un nuevo usuario
@@ -26,10 +28,8 @@ export class AuthService {
       .pipe(
         tap(response => {
           if (response && response.token) {
-            this.userActual = credentials.email;
             this.guardarToken(response.token);
-            console.log("user actual" + this.userActual);
-
+            this.guardarIDUser(response.userId);
           }
         })
       );
@@ -39,8 +39,13 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  guardarIDUser(id_usuario: number): void {
+    localStorage.setItem('id_usuario', id_usuario.toString());
+  }
+
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('id_usuario');
   }
 
   getToken(): string | null {

@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from '../services/auth.service';
+import { UsersService } from '../services/users.service';
 
 
 
@@ -29,7 +30,7 @@ export class LayoutPageComponent implements OnInit {
   isAuthenticated: boolean = false;
 
   emailActual: string | null = ""
-  // userActual: User | null = null;
+  userActual: User | null = null;
   currentToken: string | null = null;
 
   displayedColumns!: string[];
@@ -39,7 +40,7 @@ export class LayoutPageComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private overlay: Overlay,
-    /* private usersService: UsersService, */
+    public usersService: UsersService,
   ) { }
 
   ngOnInit(): void {
@@ -49,10 +50,8 @@ export class LayoutPageComponent implements OnInit {
 
   hayToken(): boolean {
     let hayToken: boolean = false;
-    this.currentToken = localStorage.getItem('token');
-    // this.nombre_publico = localStorage.getItem('nombre_publico');
 
-    if (this.currentToken) {
+    if (localStorage.getItem("token")) {
       hayToken = true;
     } else {
       hayToken = false;
@@ -60,13 +59,11 @@ export class LayoutPageComponent implements OnInit {
     return hayToken;
   }
 
-  // tokenActual(): string | null {
-  //   return localStorage.getItem("token");
-  // }
 
   // TODO: Método para obtener el PERFIL del usuario
   async getUser() {
-    console.log("layout" + this.authService.userActual);
+
+    // console.log("layout" + this.authService.userActual);
   }
 
   // Método para abrir el perfil de usuario desde la barra superior
@@ -77,11 +74,7 @@ export class LayoutPageComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
-
-    localStorage.removeItem('token');
-    // localStorage.removeItem('nombre_publico');
     this.isAuthenticated = false;
-    this.emailActual = '';
     // Reinicia el componente para refrescar las actualizaciones
     this.ngOnInit();
     this.router.navigate(['/login']);

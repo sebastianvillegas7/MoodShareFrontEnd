@@ -3,45 +3,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../shared/interfaces/user.interface';
 
-
-const ENDPOINT = 'movies_users';
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class UsersService {
 
-  user!: User;
+  // userActual!: User;
   users: User[] = [];
-  currentUser!: User | undefined;
+  currentUser: User | undefined;
   // arrayIdsMovies: string[] | number[] = [];
 
   constructor(
-    private http: HttpClient,
+    private httpClient: HttpClient,
   ) {
 
   }
 
-  // async setUserByToken() {
-  //   let token = localStorage.getItem('token');
-  //   try {
-  //     if (token) {
-  //       const response = await this.getUserByToken(token).toPromise();
-  //       if (response?.ok && response.data) {
-  //         this.currentUser = response.data as User;
-  //       } else {
-  //         // Manejar el caso en que no se pueda obtener el usuario por el token
-  //         console.error('No se pudo obtener el usuario por el token.');
-  //       }
-  //     } else {
-  //       // Manejar el caso en que el token sea nulo
-  //       console.error('El token es nulo.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error al obtener el usuario por el token:', error);
-  //   }
-  // }
+  async setUserById() {
+    let id_usuario = localStorage.getItem('id_usuario');
+    try {
+      if (id_usuario) {
+        const RESPONSE = await this.getUserById(id_usuario).toPromise();
+        if (RESPONSE) {
+          this.currentUser = RESPONSE as User;
+        } else {
+          console.error('No se pudo obtener el usuario por el id.');
+        }
+      } else {
+        console.error('El id_usuario es nulo.');
+      }
+    } catch (error) {
+      console.error('Error al obtener el usuario por el id:', error);
+    }
+  }
 
   // Método para obtener todos los usuarios
   // getUsers() {
@@ -50,7 +45,7 @@ export class UsersService {
 
   addUser(user: User) {
     const body = JSON.stringify(user);
-    return this.http.post<any>(`${URL_BASE_BACKEND}/registro`, body);
+    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/registro`, body);
   }
 
   // editUser(user: User, route?: string) {
@@ -69,14 +64,7 @@ export class UsersService {
   //   return this.http.delete<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php?id_usuario=${id_usuario}`, { headers: this.commonService.headers });
   // }
 
-  // getUserByToken(token_sesion: string | null) {
-  //   const body = JSON.stringify({ token_sesion: token_sesion });
-  //   let encodedToken = ""; // Inicializar la variable
-  //   if (token_sesion !== null) {
-  //     encodedToken = encodeURIComponent(token_sesion); // Codificar el token solo si no es nulo
-  //   }
-  //   // console.log(token_sesion);
-  //   // console.log(body);
-  //   return this.http.post<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php?token_sesion=${encodedToken}`, body, { headers: this.commonService.headers });
-  // }
+  getUserById(id_usuario: number | string) {
+    return this.httpClient.get<User>(`${URL_API_BACKEND}/${id_usuario}`);
+  }
 }

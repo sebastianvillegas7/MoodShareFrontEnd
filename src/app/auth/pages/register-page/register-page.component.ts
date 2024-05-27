@@ -44,7 +44,7 @@ export class RegisterPageComponent implements OnInit {
       try {
         const RESPONSE = await this.authService.register(USER_DATA).toPromise();
         if (RESPONSE) {
-          this.snackBar.open('¡Registro exitoso!', 'Cerrar', { duration: 6000 });
+          this.snackBar.open('¡Registro exitoso! Inicie sesión', 'Cerrar', { duration: 6000 });
           this.router.navigate(['/login']);
         } else {
           this.snackBar.open('Registro incorrecto', 'Cerrar', { duration: 6000 });

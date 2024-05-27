@@ -34,15 +34,21 @@ export class LoginPageComponent implements OnInit {
   async login() {
     if (this.loginForm.valid) {
       const data = this.loginForm.value;
-      const RESPONSE = await this.authService.login({ email: data.email, password: data.password }).toPromise();
+      try {
+        const RESPONSE = await this.authService.login({ email: data.email, password: data.password }).toPromise();
 
-      if (RESPONSE.token) {
-        this.router.navigate([`/moodshare/home`]);
-        this.snackBar.open('¡Bienvenido!', 'Cerrar', { duration: 6000 });
+        if (RESPONSE.token) {
+          this.router.navigate([`/moodshare/home`]);
+          this.snackBar.open('¡Bienvenido!', 'Cerrar', { duration: 6000 });
 
-        this.authService.userActual = data.email;
-      } else {
-        this.snackBar.open('Usuario o contraseña incorrectas', 'Cerrar', { duration: 6000 });
+          // this.authService.userActual = data.email;
+        }
+      } catch (error: any) {
+        if (error.status === 401) {
+          this.snackBar.open("Usuario/contraseña incorrectos.", 'Cerrar', { duration: 6000 });
+        } else {
+          this.snackBar.open('Error', 'Cerrar', { duration: 6000 });
+        }
       }
     }
   }
