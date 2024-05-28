@@ -33,16 +33,22 @@
           </svg>
           Buscar
         </mat-list-item>
-        <!-- <mat-list-item *ngIf="mostrarBotonGestion()" [routerLink]="['/users']" style="margin-top: 30px;"
-          (click)="sidenav.toggle()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-badge"
-            viewBox="0 0 16 16" style="margin-right: 15px">
-            <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-            <path
-              d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
+        <mat-list-item [routerLink]="['/users/search']" style="margin-top: 30px;" (click)="sidenav.toggle()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="margin-right: 15px;">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
           </svg>
-          Gestión de usuarios
-        </mat-list-item> -->
+          Lista de Favoritos
+        </mat-list-item>
+        <mat-list-item *ngIf="mostrarBotonGestion()" [routerLink]="['/users']" style="margin-top: 30px;"
+        (click)="sidenav.toggle()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-badge"
+          viewBox="0 0 16 16" style="margin-right: 15px">
+          <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+          <path
+            d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
+        </svg>
+        Gestión de Usuarios
+      </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
 
@@ -77,7 +83,7 @@
             <path
               d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z" />
           </svg>
-          {{ usersService.currentUser?.name + '' + usersService.currentUser?.apellido  }}
+          {{ usersService.currentUser?.name + ' ' + usersService.currentUser?.apellido  }}
         </button>
         <button mat-button (click)="logOut()" style="margin-left: 10px;">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-box-arrow-right"

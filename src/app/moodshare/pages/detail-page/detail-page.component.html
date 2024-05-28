@@ -6,13 +6,13 @@
 
 <div class="moodshare-details-container">
   <div class="moodshare-background-image" *ngIf="resourceData?.images"
-    [style.background-image]="'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(' + resourceData.images[0].resource_url + ')'">
+    [style.background-image]="'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(' + resourceData.images[1].resource_url + ')'">
   </div>
   <div class="moodshare-content">
     <h1>{{ resourceData?.title || resourceData?.name }}</h1>
 
     <div class="moodshare-info">
-      <img *ngIf="resourceData?.images" [src]="resourceData.images[2].resource_url" alt="{{ resourceData?.title || resourceData?.name }}">
+      <img *ngIf="resourceData?.images" [src]="resourceData.images[0].resource_url" alt="{{ resourceData?.title || resourceData?.name }}">
 
       <!-- Artist -->
       <div *ngIf="type === 'artist'" style="margin-top: 15px;">
@@ -37,7 +37,10 @@
         <ul>
           <li *ngFor="let genre of resourceData?.genres"> {{ genre }}</li>
         </ul>
-        <p *ngIf="resourceData?.styles"><strong>Styles: </strong> {{ resourceData?.styles?.join(', ') }}</p>
+        <p><strong>Styles: </strong></p>
+        <ul>
+          <li *ngFor="let styles of resourceData?.styles"> {{ styles }}</li>
+        </ul>
       </div>
     </div>
 

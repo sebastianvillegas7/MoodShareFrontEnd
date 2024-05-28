@@ -9,10 +9,8 @@ import { User } from '../shared/interfaces/user.interface';
 
 export class UsersService {
 
-  // userActual!: User;
-  users: User[] = [];
+  listadoUsers: User[] = [];
   currentUser: User | undefined;
-  // arrayIdsMovies: string[] | number[] = [];
 
   constructor(
     private httpClient: HttpClient,
@@ -31,8 +29,8 @@ export class UsersService {
         const RESPONSE = await this.getUserById(id_usuario).toPromise();
 
         if (RESPONSE) {
-          console.log("RESPONSE EN SERVICE: " + RESPONSE.id_usuario);
           this.currentUser = RESPONSE as User;
+          localStorage.setItem('rol', this.currentUser.roles[0].name);
         } else {
           console.error('No se pudo obtener el usuario por el id.');
         }
@@ -45,28 +43,21 @@ export class UsersService {
   }
 
   // Método para obtener todos los usuarios
-  // getUsers() {
-  //   return this.http.get<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php`, { headers: this.commonService.headers });
-  // }
-
-  addUser(user: User) {
-    const body = JSON.stringify(user);
-    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/registro`, body);
+  getUsers() {
+    return this.httpClient.get<User[]>(`${URL_API_BACKEND}`);
   }
 
-  // editUser(user: User, route?: string) {
-  //   const body = JSON.stringify(user);
+  addUser(userData: { name: string, apellido: string, email: string, password: string }) {
+    // const body = JSON.stringify(user); // TODO: SEGUIR ACA
+    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/api/registro`, userData);
+  }
 
-  //   if (route) {
-  //     route = `?route=${route}`;
-  //   } else {
-  //     route = '';
-  //   }
+  editUser(id_usuario: number | string, user: User) {
+    const body = JSON.stringify(user);
+    return this.httpClient.put<User>(`${URL_API_BACKEND}/${id_usuario}`, body);
+  }
 
-  //   return this.http.put<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php${route}`, body, { headers: this.commonService.headers });
-  // }
-
-  // deleteUser(id_usuario: number) {
-  //   return this.http.delete<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php?id_usuario=${id_usuario}`, { headers: this.commonService.headers });
-  // }
+  deleteUser(id_usuario: number | string) {
+    return this.httpClient.delete<any>(`${URL_API_BACKEND}/${id_usuario}`);
+  }
 }

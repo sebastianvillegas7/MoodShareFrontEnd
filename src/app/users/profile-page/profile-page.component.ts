@@ -33,10 +33,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ProfilePageComponent>,
     @Inject(MAT_DIALOG_DATA) public user: User,
-    // private movieService: MovieService,
     private router: Router,
     private snackBar: MatSnackBar,
-    // private favService: FavService,
     private usersService: UsersService,
     public dialog: MatDialog,
     private overlay: Overlay,

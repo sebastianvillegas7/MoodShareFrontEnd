@@ -10,7 +10,7 @@ const routes: Routes = [
     component: UsersComponent,
   },
   {  // TODO: PROBAR
-    path: 'profile-page',
+    path: 'profile',
     component: ProfilePageComponent
   },
 ];

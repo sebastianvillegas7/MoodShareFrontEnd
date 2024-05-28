@@ -12,12 +12,12 @@ import { Track } from 'src/app/shared/interfaces/track.interface';
   styleUrls: ['./search-page.component.css'],
 })
 
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent {
   public listadoAMostrar: any[] = []; // listado a mostrar
 
   // Formulario para controlar los cambios del input
   public searchForm: FormGroup = new FormGroup({
-    tipoDeBusqueda: new FormControl('artist'), // Valor por defecto
+    tipoDeBusqueda: new FormControl('artist'),
     busqueda: new FormControl(''),
   });
 
@@ -26,28 +26,34 @@ export class SearchPageComponent implements OnInit {
   // Variable de bandera para mostrar u ocultar el botón
   public showLoadMoreBtn: boolean = false;
 
-  constructor(public discogsService: DiscogsService) { }
+  public tipoDeBusqueda: string = "";
+  public busqueda: string = "";
 
-  ngOnInit(): void { }
+  constructor(
+    public discogsService: DiscogsService
+  ) { }
 
   // Método para realizar una búsqueda
   public searchItems() {
-    const tipoDeBusqueda = this.searchForm.get('tipoDeBusqueda')!.value;
-    const busqueda = this.searchForm.get('busqueda')!.value.trim();
+    this.tipoDeBusqueda = this.searchForm.get('tipoDeBusqueda')!.value;
+    this.busqueda = this.searchForm.get('busqueda')!.value.trim();
+    if (!this.busqueda.trim()) {
+      return;
+    }
 
     this.discogsService.listadoArtists = [];
     this.discogsService.listadoTracks = [];
     this.listadoAMostrar = [];
-
     this.paginaActual = 1;
 
-    if (!busqueda.trim()) {
-      return; // No realizar la búsqueda si el término está vacío
-    }
+    this.loadItems(this.tipoDeBusqueda, this.busqueda);
+  }
 
+  // Método para obtener los resultados de la página actual
+  private loadItems(tipoDeBusqueda: string, busqueda: string) {
     switch (tipoDeBusqueda) {
       case 'artist':
-        this.discogsService.getArtistByName(busqueda).subscribe(
+        this.discogsService.getArtistByName(busqueda, this.paginaActual).subscribe(
           (respuesta: SearchResponse<Artist>) => {
             // Almacenar los artistas en el servicio
             this.discogsService.listadoArtists = [...this.discogsService.listadoArtists, ...respuesta.results];
@@ -59,10 +65,10 @@ export class SearchPageComponent implements OnInit {
           }
         );
         break;
-      case 'track':
-        this.discogsService.getTrackByName(busqueda).subscribe(
-          (respuesta: SearchResponse<Track>) => {
-            // Almacenar los tracks en el servicio
+        case 'track':
+          this.discogsService.getTrackByName(busqueda, this.paginaActual).subscribe(
+            (respuesta: SearchResponse<Track>) => {
+              // Almacenar los tracks en el servicio
             this.discogsService.listadoTracks = [...this.discogsService.listadoTracks, ...respuesta.results];
             this.listadoAMostrar = this.discogsService.listadoTracks;
             this.showLoadMoreBtn = true;
@@ -72,25 +78,25 @@ export class SearchPageComponent implements OnInit {
           }
         );
         break;
-      case 'album':
-        this.discogsService.getAlbumByName(busqueda).subscribe(
-          (respuesta: SearchResponse<Album>) => {
-            // Almacenar los tracks en el servicio
-            this.discogsService.listadoAlbums = [...this.discogsService.listadoAlbums, ...respuesta.results];
-            this.listadoAMostrar = this.discogsService.listadoAlbums;
-            this.showLoadMoreBtn = true;
-          },
-          error => {
-            console.error('Error en la solicitud HTTP:', error);
-          }
-        );
-        break;
-    }
-  }
+        case 'album':
+          this.discogsService.getAlbumByName(busqueda, this.paginaActual).subscribe(
+            (respuesta: SearchResponse<Album>) => {
+              // Almacenar los tracks en el servicio
+              this.discogsService.listadoAlbums = [...this.discogsService.listadoAlbums, ...respuesta.results];
+              this.listadoAMostrar = this.discogsService.listadoAlbums;
+              this.showLoadMoreBtn = true;
+            },
+            error => {
+              console.error('Error en la solicitud HTTP:', error);
+            }
+          );
+          break;
+        }
+      }
 
-  // Método para cargar más resultados cuando se presiona el botón
-  public loadMore() {
-    this.paginaActual++;
-    this.searchItems();
-  }
-}
+      // Método para cargar más resultados cuando se presiona el botón
+      public loadMore() {
+        this.paginaActual++;
+        this.loadItems(this.tipoDeBusqueda, this.busqueda);
+      }
+    }

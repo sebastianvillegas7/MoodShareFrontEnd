@@ -1,12 +1,9 @@
-<style>
-  @font-face {
-    font-family: 'Nexa-Heavy';
-    src: url('/assets/fonts/Nexa-Heavy.ttf') format('truetype');
-  }
-</style>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
 
 <div class="row">
-  <h2 style="text-align: center; font-family: 'Nexa-Heavy', sans-serif; font-size: 50px; margin-top: 25px;">ÚLTIMOS RELEASES</h2>
+  <h1 style="margin-top: 35px; font-family: 'Bebas Neue', sans-serif; font-size: 80px; text-align: center;">ÚLTIMOS RELEASES</h1>
   <div class="col-12 d-flex justify-content-center">
     <list-page [listado]="discogsService.listadoAlbums"></list-page>
   </div>
@@ -15,9 +12,9 @@
 <div class="row">&nbsp;</div>
 
 <!-- Botón para cargar más resultados -->
-<!-- <div class="row justify-content-center">
+<div class="row justify-content-center">
   <button mat-stroked-button color="primary" (click)="searchTrending()" style="width: auto;">Cargar más resultados</button>
-</div> -->
+</div>
 
 <div class="row">&nbsp;</div>
 <div class="row">&nbsp;</div>

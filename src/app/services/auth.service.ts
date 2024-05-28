@@ -46,6 +46,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('id_usuario');
+    localStorage.removeItem('rol');
   }
 
   getToken(): string | null {

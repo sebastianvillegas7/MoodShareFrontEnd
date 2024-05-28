@@ -10,6 +10,10 @@ import { SearchResponse } from 'src/app/shared/interfaces/search-response.interf
 })
 
 export class HomePageComponent implements OnInit {
+  // Variable para almacenar el número de página actual
+  public paginaActual: number = 1;
+  // Variable de bandera para mostrar u ocultar el botón
+  public showLoadMoreBtn: boolean = false;
 
   constructor(
     public discogsService: DiscogsService,
@@ -17,27 +21,21 @@ export class HomePageComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
     this.searchTrending();
   }
 
 
   // Método para buscar los trending charts que se muestran en el home page
   public searchTrending() {
-    this.discogsService.listadoAlbums = [];
-
     this.discogsService.getLastReleases().subscribe(
       (respuesta: SearchResponse<Album>) => {
-        // Accede a los Albums dentro de la respuesta JSON
         const ALBUMS_TREND = respuesta.results;
-
-        // Almacena los tracks en la variable 'listadoTracks' del servicio
-        this.discogsService.listadoAlbums = [...this.discogsService.listadoAlbums, ...ALBUMS_TREND];
+        // Almacena los resultados en la variable 'listadoAlbums' del servicio
+        this.discogsService.listadoAlbums = [ ...this.discogsService.listadoAlbums, ...ALBUMS_TREND];
       },
       error => {
         console.error('Error en la solicitud HTTP:', error);
       }
     );
   }
-
 }

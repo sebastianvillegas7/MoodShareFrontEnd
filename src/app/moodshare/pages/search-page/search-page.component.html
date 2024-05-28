@@ -43,9 +43,9 @@
 
 
 <!-- Botón para cargar más resultados -->
-<!-- <div class="row justify-content-center">
-  <button mat-stroked-button color="primary" (click)="searchTrending()" style="width: auto;">Cargar más resultados</button>
-</div> -->
+<div *ngIf="showLoadMoreBtn" class="row justify-content-center">
+  <button mat-stroked-button color="primary" (click)="loadMore()" style="width: auto;">Cargar más resultados</button>
+</div>
 
 <div class="row">&nbsp;</div>
 <div class="row">&nbsp;</div>

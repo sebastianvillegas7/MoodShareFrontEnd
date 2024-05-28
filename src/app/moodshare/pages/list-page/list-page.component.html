@@ -7,7 +7,7 @@
     <mat-card class="card-inner">
       <span class="card-title">{{ item.title }}</span>
       <div class="card-image">
-        <img [src]="item.cover_image | defaultImage" [alt]="item.name + ' Image'">
+        <img [src]="item.cover_image == 'https://st.discogs.com/54eda74ad6e53ba8349acc64015edcc4f17c6796/images/spacer.gif' ? '/assets/img/default-image.png' : item.cover_image" [alt]="item.name + ' Image'">
       </div>
     </mat-card>
   </div>

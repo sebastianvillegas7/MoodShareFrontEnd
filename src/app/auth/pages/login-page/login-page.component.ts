@@ -36,15 +36,14 @@ export class LoginPageComponent implements OnInit {
 
   async login() {
     if (this.loginForm.valid) {
-      const data = this.loginForm.value;
+      const USER_DATA = this.loginForm.value;
       try {
-        const RESPONSE = await this.authService.login({ email: data.email, password: data.password }).toPromise();
+        const RESPONSE = await this.authService.login({ email: USER_DATA.email, password: USER_DATA.password }).toPromise();
 
         if (RESPONSE.token) {
+          this.usersService.setUserById();
           this.router.navigate([`/moodshare/home`]);
           this.snackBar.open('¡Bienvenido!', 'Cerrar', { duration: 6000 });
-          this.usersService.setUserById();
-          // this.authService.userActual = data.email;
         }
       } catch (error: any) {
         if (error.status === 401) {

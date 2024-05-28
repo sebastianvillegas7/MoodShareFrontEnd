@@ -58,6 +58,8 @@ export class RegisterPageComponent implements OnInit {
           this.snackBar.open('Error al registrarse', 'Cerrar', { duration: 6000 });
         }
       }
+    } else {
+      this.snackBar.open('Por favor complete el formulario correctamente', 'Cerrar', { duration: 5000 });
     }
   }
 

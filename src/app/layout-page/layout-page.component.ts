@@ -29,9 +29,9 @@ export class LayoutPageComponent implements OnInit {
 
   isAuthenticated: boolean = false;
 
-  emailActual: string | null = ""
-  userActual: User | null = null;
-  currentToken: string | null = null;
+  // emailActual: string | null = ""
+  // userActual: User | null = null;
+  // currentToken: string | null = null;
 
   displayedColumns!: string[];
 
@@ -60,19 +60,9 @@ export class LayoutPageComponent implements OnInit {
   }
 
 
-  // TODO: Método para obtener el PERFIL del usuario
-  // async getUser() {
-  //   console.log("user service: " + this.usersService.currentUser!.email);
-
-  //   this.openProfile(this.usersService.currentUser!);
-  //   // console.log("layout" + this.authService.userActual);
-  // }
-
   // Método para abrir el perfil de usuario desde la barra superior
   async openProfile() {
-    this.usersService.setUserById();
-    const USER: User = this.usersService.currentUser!
-    const dialogRef = this.dialog.open(ProfilePageComponent, { data: USER, width: '45vw', height: '80vh', scrollStrategy: this.overlay.scrollStrategies.noop() });
+    const dialogRef = this.dialog.open(ProfilePageComponent, { data: this.usersService.currentUser!, width: '45vw', height: '80vh', scrollStrategy: this.overlay.scrollStrategies.noop() });
     const RESULT = await dialogRef.afterClosed().toPromise();
   }
 
@@ -86,12 +76,16 @@ export class LayoutPageComponent implements OnInit {
   }
 
   // Metodo para mostrar el boton de panel de usuario dependiendo del rol
-  // mostrarBotonGestion() {
-  //   let id_rol_actual = localStorage.getItem('id_rol');
-  //   let mostrar: boolean = false;
-  //   if (id_rol_actual == '1') {
-  //     mostrar = true;
-  //   }
-  //   return mostrar;
-  // }
+  mostrarBotonGestion() {
+    let mostrar: boolean = false;
+    let currentRol = localStorage.getItem('rol');
+
+    if (currentRol == 'ADMIN') {
+      mostrar = true;
+    } else if (currentRol == 'USER') {
+      mostrar = false;
+    }
+
+    return mostrar;
+  }
 }
