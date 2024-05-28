@@ -44,64 +44,6 @@ export class DetailPageComponent implements OnInit {
     );
   }
 
-  // public movieData?: any;
-  // displayedColumns: string[] = ['category', 'value'];
-
-  // idMovieToFavMap: { [key: string]: string } = {};
-  // esFavorita: boolean = false;
-  // arrayIdsMovies: string[] | number[] = [];
-  // idMovieToFavMap: { [key: string]: string } = {};
-  // id_movie_actual: string | number = "";
-
-  // userActual: User | null = null;
-  // id_user_Actual: any;
-  // currentToken: string | null = "";
-
-  // ngOnInit(): void {
-  // this.getUserPorToken();
-
-  // // Obtiene el ID de la película de los parámetros de la URL
-  // const id = this.activatedRoute.snapshot.paramMap.get('id');
-  // // Verificar si id es null antes de usarlo
-  // if (id !== null) {
-  //   this.id_movie_actual = id
-  //   this.comprobarSiEsFavorita(this.id_movie_actual);
-
-  //   this.movieService.getMovieByID(this.id_movie_actual).subscribe(
-  //   (respuesta) => {
-  //     if (!respuesta) return this.router.navigate(['/movies/home']);
-
-  //     this.movieData = respuesta;
-  //     return;
-  //   });
-  // }
-  // }
-
-  // Método para obtener el usuario a partir del token
-  async getUserPorToken() {
-    // this.currentToken = localStorage.getItem("token");
-    // if (this.currentToken) {
-    //   console.log(this.currentToken);
-
-    //   const RESPONSE = await this.usersService.getUserByToken(localStorage.getItem("token")).toPromise();
-    //   if (RESPONSE !== undefined) {
-    //     if (RESPONSE.permises !== undefined) {
-    //       this.permises = RESPONSE.permises;
-
-    //       if (RESPONSE.ok) {
-    //         // Se almacena en la propiedad 'userActual' la respuesta de la solicitud
-    //         this.userActual = RESPONSE.data[0] as User;
-    //         this.id_user_Actual = this.userActual.id_usuario
-
-    //         // Se asigna a la propiedad 'currentUser' del servicio los valores del usuario
-    //         // obtenidos a partir del token
-    //         this.usersService.currentUser = this.userActual
-    //       }
-    //     }
-    //   }
-    // }
-  }
-
   async comprobarSiEsFavorita(id_movie: string | number | null) {
     // console.log(localStorage.getItem('id_usuario'));
     // this.id_user_Actual = localStorage.getItem('id_usuario');

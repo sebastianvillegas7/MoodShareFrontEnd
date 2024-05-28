@@ -3,13 +3,12 @@
 </head>
 
 <div class="container">
-  <div class="card" *ngFor="let item of listado" (click)="verDetalle(item.resource_url, item.type)">
+  <div class="card" *ngFor="let item of listado" (click)="verDetalle(item.resource_url, item.type ? item.type : item.tipoElemento)">
     <mat-card class="card-inner">
-      <span class="card-title">{{ item.title }}</span>
+      <span class="card-title">{{ item.title || item.name }}</span>
       <div class="card-image">
-        <img [src]="item.cover_image == 'https://st.discogs.com/54eda74ad6e53ba8349acc64015edcc4f17c6796/images/spacer.gif' ? '/assets/img/default-image.png' : item.cover_image" [alt]="item.name + ' Image'">
+        <img [src]="getImageUrl(item)" [alt]="item.name + ' Image'">
       </div>
     </mat-card>
   </div>
 </div>
-
