@@ -4,6 +4,11 @@
   height: 100%;
 }
 
+h2 {
+  font-family: 'Poppins';
+  font-size: 50px;
+}
+
 .favorites-section {
   margin: 20px 0;
 }

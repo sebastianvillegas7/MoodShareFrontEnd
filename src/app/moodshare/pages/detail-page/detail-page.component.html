@@ -12,13 +12,15 @@
     <h1>{{ resourceData?.title || resourceData?.name }}</h1>
 
     <div class="moodshare-info">
-      <img *ngIf="resourceData?.images" [src]="resourceData.images[0].resource_url" alt="{{ resourceData?.title || resourceData?.name }}">
+      <img *ngIf="resourceData?.images" [src]="resourceData.images[0].resource_url"
+        alt="{{ resourceData?.title || resourceData?.name }}">
 
       <!-- Artist -->
-      <div *ngIf="type === 'artist'" style="margin-top: 15px;">
+      <div *ngIf="type === 'artist'" style="margin-top: 15px; margin-right: 50px;">
         <p *ngIf="resourceData?.name"><strong>Name: </strong>{{ resourceData?.name }}</p>
-        <p *ngIf="resourceData?.realname"><strong>Real Name: </strong>{{ resourceData?.realname }}</p>
-        <p *ngIf="resourceData?.urls"><strong>Website: </strong><a href="{{ resourceData?.urls[0] }}">{{ resourceData?.urls[0] }}</a></p>
+        <p *ngIf="resourceData?.realname"><strong>Real Name: </strong>{{ resourceData?.realname }}</p><br>
+        <p *ngIf="resourceData?.urls"><strong>Website: </strong><a href="{{ resourceData?.urls[0] }}">{{
+            resourceData?.urls[0] }}</a></p><br>
         <p *ngIf="resourceData?.members"><strong>Members:</strong></p>
         <ul>
           <li *ngFor="let members of resourceData?.members">{{ members.name }}</li>
@@ -26,30 +28,44 @@
       </div>
 
       <!-- Track o Album -->
-      <div *ngIf="type === 'release' || type === 'master'" style="margin-top: 15px;">
+      <div *ngIf="type === 'release' || type === 'master'" style="margin-top: 15px; margin-right: 50px;">
         <p><strong>Title: </strong> {{ resourceData?.title }}</p>
         <p *ngIf="resourceData?.artists"><strong>Artist(s): </strong></p>
         <ul>
           <li *ngFor="let artist of resourceData?.artists"> {{ artist.name }}</li>
         </ul>
+        <br>
         <p><strong>Year: </strong> {{ resourceData?.year || resourceData?.released }}</p>
         <p><strong>Genres: </strong></p>
         <ul>
           <li *ngFor="let genre of resourceData?.genres"> {{ genre }}</li>
         </ul>
+        <br>
         <p><strong>Styles: </strong></p>
         <ul>
           <li *ngFor="let styles of resourceData?.styles"> {{ styles }}</li>
         </ul>
       </div>
+      <div class="moodshare-buttons">
+        <button mat-raised-button [color]="esFavorita ? 'accent' : 'primary'" class="large-button mat-raised-button" (click)="buttonClick()">
+          <mat-icon>{{ esFavorita ? '360' : 'favorite' }}</mat-icon>
+          {{ esFavorita ? 'QUITAR DE FAVORITAS' : 'AGREGAR A FAVORITAS' }}
+        </button>
+        <button mat-flat-button color="primary" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          Volver a la página principal
+        </button>
+      </div>
     </div>
-
-
+    <br>
     <div class="moodshare-info-details">
       <!-- Artist -->
       <div *ngIf="type === 'artist'">
-        <p *ngIf="resourceData?.profile"><strong>Profile: </strong> {{ resourceData?.profile }}</p>
-        <p *ngIf="resourceData?.groups"><strong>Groups:</strong></p>
+        <p *ngIf="resourceData?.profile"><strong>Profile: </strong><br>
+        {{ resourceData?.profile }}</p>
+        <br>
+        <p *ngIf="resourceData?.groups">
+          <strong>Groups:</strong></p>
         <ul>
           <li *ngFor="let group of resourceData?.groups">{{ group.name }}</li>
         </ul>
@@ -60,13 +76,13 @@
       </div>
 
       <p><strong>DISCOGS: </strong> <a [href]="resourceData?.uri" target="_blank">{{ resourceData?.uri }}</a></p>
-
+      <br>
       <!-- Tracklist -->
       <div *ngIf="resourceData?.tracklist?.length > 0">
         <p><strong>Tracklist: </strong></p>
         <ul>
           <li *ngFor="let track of resourceData?.tracklist">
-            <span>{{ track.title }}</span>
+            <span>{{ track.title }} ({{ track.duration }})</span>
             <span *ngIf="track.extraartists?.length"> - w/{{ track.extraartists[0]?.name }}<span *ngIf="track.duration">
                 ({{ track.duration }})</span></span>
           </li>

@@ -9,6 +9,8 @@ import { DiscogsService } from 'src/app/services/discogs.service';
   styleUrls: ['./detail-page.component.css'],
 })
 export class DetailPageComponent implements OnInit {
+  esFavorita: boolean = false;
+
   resourceUrl: string = "";
   type: string = "";
   resourceData: any;
@@ -114,9 +116,9 @@ export class DetailPageComponent implements OnInit {
     //   if (id_fav) {
     //     this.quitarFavorita(id_fav);
     //   }
-    // }
+  }
 
-    // goBack(): void {
-    //   this.router.navigate(['/movies/home'])
+  goBack(): void {
+    this.router.navigate(['/moodshare/home'])
   }
 }
