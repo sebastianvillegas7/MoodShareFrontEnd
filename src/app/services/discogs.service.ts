@@ -36,7 +36,7 @@ export class DiscogsService {
   }
 
   // Método que realiza la búsqueda de información de un artista
-  getInfoArtist(artistId: number):  Observable<SearchResponse<Artist>> {
+  getInfoArtistById(artistId: number | string):  Observable<SearchResponse<Artist>> {
     // https://api.discogs.com/artists/{artist_id}
     return this.http.get<SearchResponse<Artist>>(`${URL_API_DISCOGS}artists/${artistId}`, DISCOGS_API_HEADERS);
   }
@@ -48,11 +48,21 @@ export class DiscogsService {
     return this.http.get<SearchResponse<Track>>(`${URL_API_DISCOGS}database/search?track=${busquedaTrim}&per_page=20&page=${page}`, DISCOGS_API_HEADERS);
   }
 
+  getReleaseById(releaseId: number | string) {
+    // https://api.discogs.com/releases/{release_id}
+    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}releases/${releaseId}`, DISCOGS_API_HEADERS);
+  }
+
   // /******************** ALBUM ********************/
   getAlbumByName(nameAlbum: string, page: number): Observable<SearchResponse<Album>> {
     const busquedaTrim = nameAlbum.toLowerCase().trim();
     // https://api.discogs.com/database/search?release_title=the wall&per_page=5&page=1
-    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}database//search?release_title=${busquedaTrim}&per_page=20&page=${page}`, DISCOGS_API_HEADERS);
+    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}database/search?release_title=${busquedaTrim}&per_page=20&page=${page}`, DISCOGS_API_HEADERS);
+  }
+
+  getMasterById(masterId: number | string) {
+    // https://api.discogs.com/masters/{master_id}
+    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}masters/${masterId}`, DISCOGS_API_HEADERS);
   }
 
   /******************** RESOURCE DATA ********************/

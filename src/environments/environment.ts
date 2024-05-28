@@ -16,8 +16,8 @@ export const environment = {
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 // API BACKEND SPRINGBOOT
-export const URL_BASE_BACKEND = 'http://localhost:8080';
-export const URL_API_BACKEND = `${URL_BASE_BACKEND}/api/users`;
+export const URL_BASE_BACKEND = 'http://localhost:8080/api';
+export const URL_API_BACKEND = `${URL_BASE_BACKEND}/users`;
 
 
 

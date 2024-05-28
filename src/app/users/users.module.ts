@@ -13,11 +13,12 @@ import { MoodShareModule } from '../moodshare/moodshare.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FavoritePageComponent } from './favorite-page/favorite-page.component';
 
 
 
 @NgModule({
-  declarations: [ UsersComponent, AddUserComponent, EditUserComponent, DeleteUserComponent, ProfilePageComponent ],
+  declarations: [ UsersComponent, AddUserComponent, EditUserComponent, DeleteUserComponent, ProfilePageComponent, FavoritePageComponent ],
   imports: [
     CommonModule,
     UsersRoutingModule,

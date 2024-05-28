@@ -48,8 +48,7 @@ export class UsersService {
   }
 
   addUser(userData: { name: string, apellido: string, email: string, password: string }) {
-    // const body = JSON.stringify(user); // TODO: SEGUIR ACA
-    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/api/registro`, userData);
+    return this.httpClient.post<any>(`${URL_BASE_BACKEND}/registro`, userData);
   }
 
   editUser(id_usuario: number | string, user: User) {
@@ -59,5 +58,9 @@ export class UsersService {
 
   deleteUser(id_usuario: number | string) {
     return this.httpClient.delete<any>(`${URL_API_BACKEND}/${id_usuario}`);
+  }
+
+  getRolUsuario(): string | null {
+    return localStorage.getItem('rol');
   }
 }

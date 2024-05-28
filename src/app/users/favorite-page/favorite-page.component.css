@@ -1,0 +1,24 @@
+.favorite-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.favorites-section {
+  margin: 20px 0;
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none; /* Oculta el scrollbar en navegadores webkit */
+}
+
+.list-page .card {
+  min-width: 200px; /* Ajusta este valor según tus necesidades */
+  margin-right: 15px; /* Espacio entre cards */
+}
