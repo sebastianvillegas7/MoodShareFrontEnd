@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../shared/interfaces/user.interface';
-import { Observable, forkJoin } from 'rxjs';
 import { UsersService } from './users.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DiscogsService } from './discogs.service';
@@ -23,16 +21,15 @@ export class FavService {
               private snackBar: MatSnackBar,
               ) { }
 
-  getFavs(id_usuario: number | string) {
-    return this.httpClient.get<Favorite[]>(`${URL_BASE_BACKEND}/${ENDPOINT}/${id_usuario}`);
+  getFavs(idUsuario: number | string) {
+    return this.httpClient.get<Favorite[]>(`${URL_BASE_BACKEND}/${ENDPOINT}/${idUsuario}`);
   }
 
-  // insertarFav(id_usuario: number | string, id_movie: number | string) {
-  //   const body = JSON.stringify({ id_usuario: id_usuario, id_movie: id_movie });
-  //   return this.httpClient.post<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php`, body, { headers: this.commonService.headers });
-  // }
+  addFav(favorite: { idUsuario: number | string, idElemento: number | string, tipoElemento: string }) {
+    return this.httpClient.post<Favorite>(`${URL_BASE_BACKEND}/${ENDPOINT}`, favorite);
+  }
 
-  // deleteFav(id_fav: number | string) {
-  //   return this.httpClient.delete<ApiResponse>(`${URL_API_SGE}/${ENDPOINT}.php?id_fav=${id_fav}`, { headers: this.commonService.headers });
-  // }
+  deleteFav(idFav: number | string) {
+    return this.httpClient.delete<any>(`${URL_BASE_BACKEND}/delete/${idFav}`);
+  }
 }

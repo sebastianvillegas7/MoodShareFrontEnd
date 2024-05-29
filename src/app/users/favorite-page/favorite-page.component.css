@@ -4,6 +4,13 @@
   height: 100%;
 }
 
+h1 {
+  margin-top: 35px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  text-align: center;
+}
+
 h2 {
   font-family: 'Poppins';
   font-size: 50px;

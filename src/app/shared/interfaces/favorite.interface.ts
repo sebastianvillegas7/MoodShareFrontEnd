@@ -1,5 +1,5 @@
 export interface Favorite {
-  idFav: number | string;
+  idFav?: number | string;
   idElemento: number | string;
   idUsuario: number | string;
   tipoElemento: string;

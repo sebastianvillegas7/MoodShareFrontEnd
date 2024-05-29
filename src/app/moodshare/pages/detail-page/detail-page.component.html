@@ -4,7 +4,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
-<div class="moodshare-details-container">
+<div *ngIf="!resourceData">
+  Loading...
+</div>
+
+<div *ngIf="resourceData" class="moodshare-details-container">
   <div class="moodshare-background-image" *ngIf="resourceData?.images"
     [style.background-image]="'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(' + resourceData.images[1].resource_url + ')'">
   </div>
@@ -16,7 +20,7 @@
         alt="{{ resourceData?.title || resourceData?.name }}">
 
       <!-- Artist -->
-      <div *ngIf="type === 'artist'" style="margin-top: 15px; margin-right: 50px;">
+      <div *ngIf="tipoElemento === 'artist'" style="margin-top: 15px; margin-right: 50px;">
         <p *ngIf="resourceData?.name"><strong>Name: </strong>{{ resourceData?.name }}</p>
         <p *ngIf="resourceData?.realname"><strong>Real Name: </strong>{{ resourceData?.realname }}</p><br>
         <p *ngIf="resourceData?.urls"><strong>Website: </strong><a href="{{ resourceData?.urls[0] }}">{{
@@ -28,7 +32,7 @@
       </div>
 
       <!-- Track o Album -->
-      <div *ngIf="type === 'release' || type === 'master'" style="margin-top: 15px; margin-right: 50px;">
+      <div *ngIf="tipoElemento === 'release' || tipoElemento === 'master'" style="margin-top: 15px; margin-right: 50px;">
         <p><strong>Title: </strong> {{ resourceData?.title }}</p>
         <p *ngIf="resourceData?.artists"><strong>Artist(s): </strong></p>
         <ul>
@@ -47,7 +51,7 @@
         </ul>
       </div>
       <div class="moodshare-buttons">
-        <button mat-raised-button [color]="esFavorita ? 'accent' : 'primary'" class="large-button mat-raised-button" (click)="buttonClick()">
+        <button mat-raised-button [color]="esFavorita ? 'accent' : 'primary'" class="large-button mat-raised-button" (click)="toggleFav()">
           <mat-icon>{{ esFavorita ? '360' : 'favorite' }}</mat-icon>
           {{ esFavorita ? 'QUITAR DE FAVORITAS' : 'AGREGAR A FAVORITAS' }}
         </button>
@@ -60,7 +64,7 @@
     <br>
     <div class="moodshare-info-details">
       <!-- Artist -->
-      <div *ngIf="type === 'artist'">
+      <div *ngIf="tipoElemento === 'artist'">
         <p *ngIf="resourceData?.profile"><strong>Profile: </strong><br>
         {{ resourceData?.profile }}</p>
         <br>

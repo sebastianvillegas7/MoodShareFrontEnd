@@ -71,7 +71,7 @@ export class DiscogsService {
   }
 
   /******************** ARTIST RELEASES ********************/
-  getArtistReleases(artistId: number): Observable<any> {
+  getArtistReleases(artistId: number | string): Observable<any> {
     return this.http.get<any>(`${URL_API_DISCOGS}artists/${artistId}/releases`, DISCOGS_API_HEADERS);
   }
 }

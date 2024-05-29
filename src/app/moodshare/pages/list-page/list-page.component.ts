@@ -34,7 +34,7 @@ export class ListPageComponent {
     }
   }
 
-  verDetalle(resourceUrl: string, type: string) {
-    this.router.navigate(['/moodshare/detail'], { state: { resourceUrl, type } });
+  verDetalle(idElemento:string, resourceUrl: string, tipoElemento: string) {
+    this.router.navigate(['/moodshare/detail'], { state: { idElemento, resourceUrl, tipoElemento } });
   }
 }

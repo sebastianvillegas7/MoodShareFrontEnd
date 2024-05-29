@@ -29,7 +29,6 @@ export class FavoritePageComponent implements OnInit {
 
   constructor(
     private favService: FavService,
-    private usersService: UsersService,
     private discogsService: DiscogsService,
     private router: Router,
     private snackBar: MatSnackBar
@@ -51,7 +50,7 @@ export class FavoritePageComponent implements OnInit {
 
       if (RESPONSE && RESPONSE.length > 0) {
         for (const favorite of RESPONSE) {
-          this.idFavAndIdElemMap[favorite.idFav] = favorite.idElemento;
+          this.idFavAndIdElemMap[favorite.idFav!] = favorite.idElemento;
 
           switch (favorite.tipoElemento) {
             case TipoElemento.Artist:

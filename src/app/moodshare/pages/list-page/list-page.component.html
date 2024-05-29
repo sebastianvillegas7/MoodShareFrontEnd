@@ -3,7 +3,7 @@
 </head>
 
 <div class="container">
-  <div class="card" *ngFor="let item of listado" (click)="verDetalle(item.resource_url, item.type ? item.type : item.tipoElemento)">
+  <div class="card" *ngFor="let item of listado" (click)="verDetalle(item.id, item.resource_url, item.type ? item.type : item.tipoElemento)">
     <mat-card class="card-inner">
       <span class="card-title">{{ item.title || item.name }}</span>
       <div class="card-image">
