@@ -78,18 +78,20 @@ export class FavoritePageComponent implements OnInit {
     const OBSERVABLES_ARTISTS: Observable<any>[] = this.arrayIdsArtist.map(id =>
       this.discogsService.getInfoArtistById(id).pipe(map(data => ({ ...data, tipoElemento: TipoElemento.Artist })))
     );
+
     const OBSERVABLES_RELEASES: Observable<any>[] = this.arrayIdsReleases.map(id =>
       this.discogsService.getReleaseById(id).pipe(map(data => ({ ...data, tipoElemento: TipoElemento.Release })))
     );
+
     const OBSERVABLES_MASTERS: Observable<any>[] = this.arrayIdsMasters.map(id =>
       this.discogsService.getMasterById(id).pipe(map(data => ({ ...data, tipoElemento: TipoElemento.Master })))
     );
 
     forkJoin([...OBSERVABLES_ARTISTS, ...OBSERVABLES_RELEASES, ...OBSERVABLES_MASTERS]).subscribe({
       next: (favorites: any[]) => {
-        this.listadoArtists = favorites.filter(item => item.tipoElemento === TipoElemento.Artist);
-        this.listadoReleases = favorites.filter(item => item.tipoElemento === TipoElemento.Release);
-        this.listadoMasters = favorites.filter(item => item.tipoElemento === TipoElemento.Master);
+        this.listadoArtists = favorites.filter(item => item.tipoElemento == TipoElemento.Artist);
+        this.listadoReleases = favorites.filter(item => item.tipoElemento == TipoElemento.Release);
+        this.listadoMasters = favorites.filter(item => item.tipoElemento == TipoElemento.Master);
       },
       error: (error: any) => {
         console.error('Error obteniendo favoritos: ', error);

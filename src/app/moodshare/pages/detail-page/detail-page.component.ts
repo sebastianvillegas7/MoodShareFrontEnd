@@ -19,6 +19,7 @@ export class DetailPageComponent implements OnInit {
 
   idElemento: string = "";
   idUsuario: string | number = "";
+  // userFavoriteIds: (string | number)[] = [];
 
   constructor(
     private router: Router,
@@ -32,6 +33,12 @@ export class DetailPageComponent implements OnInit {
     this.resourceUrl = history.state.resourceUrl;
     this.tipoElemento = history.state.tipoElemento;
     this.idUsuario = localStorage.getItem('id_usuario')!;
+
+    this.comprobarSiEsFavorita(this.idElemento);
+
+    // Obtener los IDs de favoritos del usuario
+    this.favService.getUserFavoriteIds(localStorage.getItem('id_usuario')!);
+
 
     this.discogsService.getResourceDataByUrl(this.resourceUrl).subscribe(
       (respuesta) => {
@@ -70,18 +77,7 @@ export class DetailPageComponent implements OnInit {
   }
 
   comprobarSiEsFavorita(idElemento: string | number): void {
-    this.favService.getFavs(this.idUsuario).subscribe(
-      (respuesta) => {
-        if (respuesta) {
-          this.esFavorita = respuesta.some(
-            (fav: any) => fav.idElemento == idElemento
-          );
-        }
-      },
-      (error) => {
-        console.error('Error comprobando si es favorita: ', error);
-      }
-    );
+    this.esFavorita = this.favService.idsFavoritesDelUsuario.includes(idElemento);
   }
 
 
@@ -104,7 +100,11 @@ export class DetailPageComponent implements OnInit {
     try {
       await this.favService.addFav(NEW_FAVORITE).toPromise();
       this.snackBar.open('Agregado a favoritos', 'Cerrar', { duration: 5000 });
-      this.esFavorita = true;
+      this.esFavorita = true; // Actualizar a true después de agregar
+      // Actualizar la lista de favoritos del usuario
+      await this.favService.getUserFavoriteIds(this.idUsuario);
+      // Comprobar si es favorita después de agregar
+      this.comprobarSiEsFavorita(this.idElemento);
     } catch (error) {
       console.error('Error agregando a favorita: ', error);
       this.snackBar.open('Error agregando a favoritos', 'Cerrar', { duration: 5000 });
@@ -113,15 +113,15 @@ export class DetailPageComponent implements OnInit {
 
   async quitarFavorita(): Promise<void> {
     try {
-      const favs = await this.favService.getFavs(this.idUsuario).toPromise();
-      if (favs != null) {
-        const FAVORITE = favs.find((fav: any) => fav.idElemento == this.idElemento);
-
-        if (FAVORITE) {
-          await this.favService.deleteFav(FAVORITE.idFav!).toPromise();
-          this.snackBar.open('Quitado de favoritos', 'Cerrar', { duration: 5000 });
-          this.esFavorita = false;
-        }
+      // Verificar si el ID del elemento está en los favoritos del usuario
+      if (this.favService.idsFavoritesDelUsuario.includes(this.idElemento)) {
+        await this.favService.deleteFav(this.idElemento).toPromise();
+        this.snackBar.open('Quitado de favoritos', 'Cerrar', { duration: 5000 });
+        this.esFavorita = false; // Actualizar a false después de quitar
+        // Actualizar la lista de favoritos del usuario
+        await this.favService.getUserFavoriteIds(this.idUsuario);
+        // Comprobar si es favorita después de quitar
+        this.comprobarSiEsFavorita(this.idElemento);
       }
     } catch (error) {
       console.error('Error quitando de favorita: ', error);
@@ -133,3 +133,4 @@ export class DetailPageComponent implements OnInit {
     this.router.navigate(['/moodshare/home'])
   }
 }
+

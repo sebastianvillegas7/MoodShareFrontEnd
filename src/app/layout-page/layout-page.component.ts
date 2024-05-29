@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
+import { FavService } from '../services/fav.service';
 
 
 
@@ -29,9 +30,7 @@ export class LayoutPageComponent implements OnInit {
 
   isAuthenticated: boolean = false;
 
-  // emailActual: string | null = ""
-  // userActual: User | null = null;
-  // currentToken: string | null = null;
+  userActual: User | null = null;
 
   displayedColumns!: string[];
 
@@ -41,12 +40,19 @@ export class LayoutPageComponent implements OnInit {
     public dialog: MatDialog,
     private overlay: Overlay,
     public usersService: UsersService,
+    private favService: FavService,
   ) { }
 
   ngOnInit(): void {
-    // this.currentToken = this.tokenActual();
-    // this.isAuthenticated = !!this.currentToken;
+    this.isAuthenticated = this.hayToken();
+    if (this.isAuthenticated) {
+      const storedUser = localStorage.getItem('currentUser');
+      if (storedUser) {
+        this.usersService.currentUser = JSON.parse(storedUser);
+      }
+    }
   }
+
 
   hayToken(): boolean {
     let hayToken: boolean = false;
@@ -58,7 +64,6 @@ export class LayoutPageComponent implements OnInit {
     }
     return hayToken;
   }
-
 
   // Método para abrir el perfil de usuario desde la barra superior
   async openProfile() {

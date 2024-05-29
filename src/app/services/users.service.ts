@@ -22,26 +22,6 @@ export class UsersService {
     return this.httpClient.get<any>(`${URL_API_BACKEND}/${id_usuario}`);
   }
 
-  async setUserById() {
-    let id_usuario = localStorage.getItem('id_usuario');
-    try {
-      if (id_usuario) {
-        const RESPONSE = await this.getUserById(id_usuario).toPromise();
-
-        if (RESPONSE) {
-          this.currentUser = RESPONSE as User;
-          localStorage.setItem('rol', this.currentUser.roles[0].name);
-        } else {
-          console.error('No se pudo obtener el usuario por el id.');
-        }
-      } else {
-        console.error('El id_usuario es nulo.');
-      }
-    } catch (error) {
-      console.error('Error al obtener el usuario por el id:', error);
-    }
-  }
-
   // Método para obtener todos los usuarios
   getUsers() {
     return this.httpClient.get<User[]>(`${URL_API_BACKEND}`);

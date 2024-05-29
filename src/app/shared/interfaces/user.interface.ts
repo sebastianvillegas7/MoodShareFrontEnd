@@ -6,5 +6,4 @@ export interface User {
   password: string;
   roles: any[];
   token_sesion?: string | null;
-  // lista_fav: string | null;
 }
