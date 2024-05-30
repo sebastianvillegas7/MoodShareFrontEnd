@@ -55,7 +55,6 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
-
   async login() {
     if (this.loginForm.valid) {
       const USER_DATA = this.loginForm.value;
