@@ -1,28 +1,41 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
 <div class="favorite-container">
-  <h1>LISTADOS DE FAVORITOS</h1>
+  <h1>COLECCIÓN DE FAVORITOS</h1>
 
-  <div class="favorites-section">
-    <h2>Artistas</h2>
-    <div class="horizontal-scroll">
-      <list-page [listado]="listadoArtists"></list-page>
-    </div>
-  </div>
-
-  <div class="favorites-section">
-    <h2>Releases</h2>
-    <div class="horizontal-scroll">
-      <list-page [listado]="listadoReleases"></list-page>
-    </div>
-  </div>
-
-  <div class="favorites-section">
-    <h2>Masters</h2>
-    <div class="horizontal-scroll">
-      <list-page [listado]="listadoMasters"></list-page>
-    </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
+  <mat-tab-group>
+    <mat-tab label="Artistas">
+      <div class="favorites-section">
+        <ng-container *ngIf="listadoArtists.length > 0; else noFavoritesArtists">
+          <list-page [listado]="listadoArtists"></list-page>
+        </ng-container>
+        <ng-template #noFavoritesArtists>
+          <p class="no-favorites-text">Aún no tienes artistas favoritos.</p>
+        </ng-template>
+      </div>
+    </mat-tab>
+    <mat-tab label="Canciones & Álbums">
+      <div class="favorites-section">
+        <ng-container *ngIf="listadoReleases.length > 0; else noFavoritesReleases">
+          <list-page [listado]="listadoReleases"></list-page>
+        </ng-container>
+        <ng-template #noFavoritesReleases>
+          <p class="no-favorites-text">Aún no tienes canciones favoritas.</p>
+        </ng-template>
+      </div>
+      <div class="favorites-section">
+        <ng-container *ngIf="listadoMasters.length > 0; else noFavoritesMasters">
+          <list-page [listado]="listadoMasters"></list-page>
+        </ng-container>
+        <ng-template #noFavoritesMasters>
+          <p class="no-favorites-text">Aún no tienes álbums favoritos.</p>
+        </ng-template>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
+<br>
+<br>
+<br>

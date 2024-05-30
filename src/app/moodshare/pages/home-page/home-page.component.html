@@ -1,9 +1,52 @@
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* Full height of the viewport */
+      flex-direction: column;
+    }
+
+    .loading-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      color: #666;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <div class="row">
-  <h1 style="margin-top: 35px; font-family: 'Bebas Neue', sans-serif; font-size: 80px; text-align: center;">ÚLTIMOS RELEASES</h1>
+  <div *ngIf="!discogsService.listadoAlbums" class="loading-container">
+    <div class="spinner"></div>
+    <p class="loading-text">Cargando...</p>
+  </div>
+
+  <h1 style="margin-top: 35px; font-family: 'Bebas Neue', sans-serif; font-size: 80px; text-align: center;">ÚLTIMOS
+    RELEASES</h1>
   <div class="col-12 d-flex justify-content-center">
     <list-page [listado]="discogsService.listadoAlbums"></list-page>
   </div>
@@ -13,7 +56,8 @@
 
 <!-- Botón para cargar más resultados -->
 <div class="row justify-content-center">
-  <button mat-stroked-button color="primary" (click)="searchTrending()" style="width: auto;">Cargar más resultados</button>
+  <button mat-stroked-button color="primary" (click)="searchTrending()" style="width: auto;">Cargar más
+    resultados</button>
 </div>
 
 <div class="row">&nbsp;</div>

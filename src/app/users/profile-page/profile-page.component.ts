@@ -39,15 +39,10 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
-  // async editUser(user: User) {
-  //   const dialogRef = this.dialog.open(EditUserComponent, { data: user, scrollStrategy: this.overlay.scrollStrategies.noop() });
-  //   const RESULT = await dialogRef.afterClosed().toPromise();
-  //   if (RESULT) {
-  //     if (RESULT.ok) {
-  //       this.dataSource.data = this.usersService.users;
-  //     }
-  //   }
-  // }
+  async editUser(user: User) {
+    const dialogRef = this.dialog.open(EditUserComponent, { data: user, scrollStrategy: this.overlay.scrollStrategies.noop() });
+    const RESULT = await dialogRef.afterClosed().toPromise();
+  }
 
 
 

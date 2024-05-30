@@ -31,9 +31,9 @@ export class UsersService {
     return this.httpClient.post<any>(`${URL_BASE_BACKEND}/registro`, userData);
   }
 
-  editUser(id_usuario: number | string, user: User) {
-    const body = JSON.stringify(user);
-    return this.httpClient.put<User>(`${URL_API_BACKEND}/${id_usuario}`, body);
+  editUser(id_usuario: number | string, userData: { name: string, apellido: string, email: string, password: string }) {
+    // const body = JSON.stringify(user);
+    return this.httpClient.put<any>(`${URL_API_BACKEND}/${id_usuario}`, userData);
   }
 
   deleteUser(id_usuario: number | string) {

@@ -65,6 +65,11 @@ export class DiscogsService {
     return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}masters/${masterId}`, DISCOGS_API_HEADERS);
   }
 
+  getMasterByName(nameMaster: number | string, page: number) {
+    // https://api.discogs.com/database/search?type=master&q={nombre_del_master}
+    return this.http.get<SearchResponse<Album>>(`${URL_API_DISCOGS}database/search?type=master&q=${nameMaster}&per_page=20&page=${page}`, DISCOGS_API_HEADERS);
+  }
+
   /******************** RESOURCE DATA ********************/
   getResourceDataByUrl(resourceUrl: string): Observable<any> {
     return this.http.get<any>(resourceUrl, DISCOGS_API_HEADERS);

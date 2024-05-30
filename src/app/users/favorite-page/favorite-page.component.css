@@ -4,33 +4,21 @@
   height: 100%;
 }
 
-h1 {
+.favorite-container h1 {
   margin-top: 35px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 80px;
   text-align: center;
 }
 
-h2 {
-  font-family: 'Poppins';
-  font-size: 50px;
-}
-
 .favorites-section {
   margin: 20px 0;
 }
 
-.horizontal-scroll {
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.horizontal-scroll::-webkit-scrollbar {
-  display: none; /* Oculta el scrollbar en navegadores webkit */
-}
-
-.list-page .card {
-  min-width: 200px; /* Ajusta este valor según tus necesidades */
-  margin-right: 15px; /* Espacio entre cards */
+.no-favorites-text {
+  text-align: center;
+  font-size: 20px;
+  color: #666;
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
 }

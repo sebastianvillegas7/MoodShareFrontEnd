@@ -25,14 +25,16 @@ export class ListPageComponent {
 
   getImageUrl(item: any): string {
     // Si tiene `cover_image`, usarlo a menos que sea el placeholder
-    if (item.cover_image && item.cover_image !== 'https://st.discogs.com/54eda74ad6e53ba8349acc64015edcc4f17c6796/images/spacer.gif') {
+    if (item.cover_image && !item.cover_image.endsWith('spacer.gif')) {
       return item.cover_image;
-    } else if (item.cover_image && item.cover_image !== 'https://st.discogs.com/54eda74ad6e53ba8349acc64015edcc4f17c6796/images/spacer.gif') {
+    } else if (item.cover_image && item.cover_image.endsWith('spacer.gif')) {
       return '/assets/img/default-image.png';
     } else {
-      return item.images[0].uri;
+      // Si no hay `cover_image`, usar la primera URI de la lista de imágenes
+      return item.images? (item.images[0].uri? item.images[1].uri : item.images[0].uri) : '/assets/img/default-image.png';
     }
   }
+
 
   verDetalle(idElemento:string, resourceUrl: string, tipoElemento: string) {
     this.router.navigate(['/moodshare/detail'], { state: { idElemento, resourceUrl, tipoElemento } });

@@ -79,7 +79,7 @@ export class SearchPageComponent {
         );
         break;
         case 'album':
-          this.discogsService.getAlbumByName(busqueda, this.paginaActual).subscribe(
+          this.discogsService.getMasterByName(busqueda, this.paginaActual).subscribe(
             (respuesta: SearchResponse<Album>) => {
               // Almacenar los tracks en el servicio
               this.discogsService.listadoAlbums = [...this.discogsService.listadoAlbums, ...respuesta.results];

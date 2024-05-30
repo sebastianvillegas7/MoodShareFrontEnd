@@ -67,6 +67,7 @@
   width: 94%; /* Ajustar el ancho al 100% para que ocupe todo el ancho disponible */
   max-width: none; /* Eliminar el límite máximo de ancho */
   max-height: none;
+  overflow-x: hidden;
   padding-right: 0; /* Eliminar cualquier relleno en el lado derecho */
   padding-left: 0; /* Eliminar cualquier relleno en el lado izquierdo */
   margin-right: auto;

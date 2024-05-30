@@ -12,7 +12,7 @@
         <mat-label>Seleccionar</mat-label>
         <mat-select formControlName="tipoDeBusqueda">
           <mat-option value="artist">Artista</mat-option>
-          <mat-option value="track">Track</mat-option>
+          <mat-option value="track">Canción</mat-option>
           <mat-option value="album">Álbum</mat-option>
         </mat-select>
       </mat-form-field>
@@ -34,6 +34,11 @@
 
 
   <div class="col-16 d-flex justify-content-center">
+    <div *ngIf="!listadoAMostrar" class="loading-container">
+      <div class="spinner"></div>
+      <p class="loading-text">Cargando...</p>
+    </div>
+
     <list-page [listado]="listadoAMostrar"></list-page>
   </div>
 
