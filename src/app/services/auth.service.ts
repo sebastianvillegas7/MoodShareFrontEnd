@@ -16,7 +16,7 @@ export class AuthService {
   ) { }
 
   // Método para registrar un nuevo usuario
-  register(userData: { name: string, apellido: string, email: string, password: string }): Observable<any> {
+  register(userData: { name: string, apellido: string, email: string, password?: string }): Observable<any> {
     return this.httpClient.post<any>(`${URL_BASE_BACKEND}/registro`, userData);
   }
 

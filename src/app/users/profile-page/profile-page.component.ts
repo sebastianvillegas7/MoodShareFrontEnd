@@ -1,12 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { NavigationExtras, Router } from '@angular/router';
-import { Observable, forkJoin } from 'rxjs';
-// import { MovieService } from 'src/app/services/movies.service';
-// import { Movie } from 'src/app/shared/interfaces/movie.interface';
+import { Router } from '@angular/router';
 import { User } from 'src/app/shared/interfaces/user.interface';
-// import { FavService } from '../../services/fav.service';
-// import { Permises } from 'src/app/shared/interfaces/api-response.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/services/users.service';
 import { EditUserComponent } from '../edit-user/edit-user.component';
@@ -19,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./profile-page.component.css']
 })
 
-export class ProfilePageComponent implements OnInit {
+export class ProfilePageComponent {
   dataSource: MatTableDataSource<User> = new MatTableDataSource();
 
   constructor(
@@ -34,9 +29,9 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    // console.log("user en profile inject: " + this.user[0].id_usuario);
-
+  verFavs() {
+    this.router.navigate([`/users/favs`]);
+    this.dialogRef.close();
   }
 
   async editUser(user: User) {
@@ -44,11 +39,7 @@ export class ProfilePageComponent implements OnInit {
     const RESULT = await dialogRef.afterClosed().toPromise();
   }
 
-
-
   goBack(): void {
     this.dialogRef.close();
   }
 }
-
-

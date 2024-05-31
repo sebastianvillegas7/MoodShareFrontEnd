@@ -31,16 +31,11 @@
             </mat-chip>
             {{ user.apellido }}
           </div>
-          <div class="info-section fs-5">
-            <mat-chip color="primary">
-              Rol
-            </mat-chip>
-            {{ user.roles![0].name }}
-          </div>
         </div>
         <div class="bottom-buttons">
-          <button mat-flat-button color="primary" class="editar-button" (click)="editUser(user)">Editar</button>
-          <button mat-raised-button color="primary" class="cerrar-button" (click)="goBack()">Cerrar</button>
+          <button mat-raised-button color="primary" class="editar-button" (click)="verFavs()">Ver Favoritos</button>
+          <button mat-stroked-button color="primary" class="editar-button" (click)="editUser(user)">Editar</button>
+          <button mat-flat-button color="primary" class="cerrar-button" (click)="goBack()">Cerrar</button>
         </div>
       </div>
     </ng-template>

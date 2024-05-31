@@ -31,20 +31,21 @@
       </mat-form-field>
     </div>
 
-    <!-- <div class="form">
-      <mat-form-field class="custom-mat-form-field" color="accent">
-        <mat-label>Rol</mat-label>
-        <mat-select formControlName="id_rol" required>
-          <mat-option value="1">ADMIN</mat-option>
-          <mat-option value="2">USER</mat-option>
-        </mat-select>
-        <mat-error *ngIf="userForm.get('rol')?.hasError('required')">Seleccione un Rol</mat-error>
-      </mat-form-field>
-    </div> -->
-
     <div mat-dialog-actions class="buttons">
       <button mat-raised-button color="primary" id="onSubmit" type="submit" [disabled]="!addUserForm.valid" (click)="confirmAdd()">Guardar</button>
       <button mat-flat-button color="primary" id="onNoClick" (click)="onNoClick()" tabindex="-1">Cancelar</button>
     </div>
   </form>
 </div>
+
+
+      <!-- <div class="form">
+        <mat-form-field class="custom-mat-form-field" color="accent">
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="id_rol" required>
+            <mat-option value="1">ADMIN</mat-option>
+            <mat-option value="2">USER</mat-option>
+          </mat-select>
+          <mat-error *ngIf="userForm.get('rol')?.hasError('required')">Seleccione un Rol</mat-error>
+        </mat-form-field>
+      </div> -->

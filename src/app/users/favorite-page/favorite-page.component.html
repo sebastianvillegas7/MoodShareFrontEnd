@@ -22,16 +22,13 @@
           <list-page [listado]="listadoReleases"></list-page>
         </ng-container>
         <ng-template #noFavoritesReleases>
-          <p class="no-favorites-text">Aún no tienes canciones favoritas.</p>
+          <p class="no-favorites-text">Aún no tienes canciones/álbums favoritos.</p>
         </ng-template>
       </div>
       <div class="favorites-section">
-        <ng-container *ngIf="listadoMasters.length > 0; else noFavoritesMasters">
+        <ng-container *ngIf="listadoMasters.length > 0;">
           <list-page [listado]="listadoMasters"></list-page>
         </ng-container>
-        <ng-template #noFavoritesMasters>
-          <p class="no-favorites-text">Aún no tienes álbums favoritos.</p>
-        </ng-template>
       </div>
     </mat-tab>
   </mat-tab-group>

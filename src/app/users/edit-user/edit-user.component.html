@@ -1,16 +1,17 @@
 <div class="container">
   <h3 mat-dialog-title>Editar Usuario</h3>
+
   <form class="mat-dialog-content" [formGroup]="editUserForm">
-    <div>
+    <div class="form">
       <mat-form-field class="custom-mat-form-field" color="accent">
-        <small>ID User</small>
-        <input matInput placeholder="ID" formControlName="id_usuario" maxlength="255" readonly>
+        <small>ID Usuario</small>
+        <input matInput placeholder="ID Usuario" formControlName="id_usuario" maxlength="255" readonly>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field class="custom-mat-form-field" color="accent">
-        <input matInput placeholder="Correo electrónico" formControlName="usuario" maxlength="255" required>
+        <input matInput placeholder="Correo electrónico" formControlName="email" maxlength="255" required>
         <mat-error *ngIf="editUserForm.get('email')?.hasError('required')">El campo Correo electrónico es obligatorio</mat-error>
         <mat-error *ngIf="editUserForm.get('email')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
       </mat-form-field>
@@ -18,15 +19,22 @@
 
     <div class="form">
       <mat-form-field class="custom-mat-form-field" color="accent">
-        <input matInput placeholder="Nombre público" formControlName="nombre_publico" maxlength="255" required>
-        <mat-error *ngIf="editUserForm.get('nombre_publico')?.hasError('required')">El campo Nombre público es obligatorio</mat-error>
+        <input matInput placeholder="Nombre" formControlName="name" maxlength="255" required>
+        <mat-error *ngIf="editUserForm.get('name')?.hasError('required')">El campo Nombre es obligatorio</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field class="custom-mat-form-field" color="accent">
-        <input matInput placeholder="Contraseña" formControlName="password" type="password" maxlength="100" required>
-        <mat-error *ngIf="editUserForm.get('pass_user')?.hasError('required')">El campo Contraseña es obligatorio</mat-error>
+        <input matInput placeholder="Apellido" formControlName="apellido" maxlength="255" required>
+        <mat-error *ngIf="editUserForm.get('apellido')?.hasError('required')">El campo Apellido es obligatorio</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="custom-mat-form-field" color="accent">
+        <input matInput placeholder="Contraseña" formControlName="password" type="password" maxlength="100">
+        <mat-error *ngIf="editUserForm.get('password')?.hasError('required')">El campo Contraseña es obligatorio</mat-error>
       </mat-form-field>
     </div>
 

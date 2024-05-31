@@ -1,13 +1,18 @@
-COMANDOS E INSTALACIONES 
-CREACION PROYECTO ANGULAR 16
+COMANDOS E INSTALACIONES
+# FRONTEND - PROYECTO ANGULAR 16
 
-- Descargar e instalar node.js y nvm for windows
-- Ejecutar los comandos en consola:
+Para su ejecución:
+- Instalar Node.js y nvm for windows
+- Ejecutar comandos en consola:
 
-npm install -g npm@8.19.4 // esta version funciona bien con node 16.20.2
+npm install -g npm@8.19.4 // version npm compatible con node 16.20.2
 nvm install 16.20.2
 nvm use 16.20.2
-npx -p @angular/cli@16 ng new new-project
 npm start
+
+# BACKEND - PROYECTO SPRINGBOOT
+
+- Verificar que el puerto 8080 se encuentra disponible, o configurar un puerto diferente en el fichero application.properties.
+- Ejecutar la clase Main del proyecto.
 
 
