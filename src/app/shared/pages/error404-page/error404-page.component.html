@@ -1,1 +1,26 @@
-<p>error404-page works!</p>
+<head>
+  <style>
+    .error-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .error-container h1 {
+      margin-top: 60px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+    }
+
+    .error-container p {
+      font-size: 24px;
+      font-family: 'Poppins';
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<div class="error-container">
+  <h1>Error 404</h1>
+  <p>¡Lo sentimos, la página que estás buscando no pudo ser encontrada!</p>
+  <button mat-raised-button color="primary" (click)="navigate()">Volver al inicio</button>
+</div>

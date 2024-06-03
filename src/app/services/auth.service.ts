@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { URL_BASE_BACKEND } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +12,11 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-  ) { }
+    private router: Router
+  ) {
+    // this.clearLocalStorage();
+  }
 
-  // Método para registrar un nuevo usuario
   register(userData: { name: string, apellido: string, email: string, password?: string }): Observable<any> {
     return this.httpClient.post<any>(`${URL_BASE_BACKEND}/registro`, userData);
   }
@@ -41,6 +42,11 @@ export class AuthService {
   }
 
   logout(): void {
+    this.clearLocalStorage();
+    this.router.navigate(['/login']);
+  }
+
+  clearLocalStorage(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('id_usuario');
     localStorage.removeItem('rol');
@@ -53,5 +59,10 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  isAdmin(): boolean {
+    let currentRol = localStorage.getItem("rol");
+    return currentRol == 'ADMIN';
   }
 }

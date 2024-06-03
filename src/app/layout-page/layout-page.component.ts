@@ -1,8 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { ProfilePageComponent } from '../users/profile-page/profile-page.component';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
 
 import { User } from '../shared/interfaces/user.interface';
@@ -11,7 +9,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
-import { FavService } from '../services/fav.service';
 
 
 
@@ -22,25 +19,20 @@ import { FavService } from '../services/fav.service';
 })
 
 export class LayoutPageComponent implements OnInit {
-  footerInfo = "                     sebastián villegas - 2024"
+  footerInfo = "Sebastián Villegas ® 2024"
   dataSource: MatTableDataSource<User> = new MatTableDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   isAuthenticated: boolean = false;
-
   userActual: User | null = null;
-
-  displayedColumns!: string[];
 
   constructor(
     public authService: AuthService,
-    private router: Router,
     public dialog: MatDialog,
     private overlay: Overlay,
     public usersService: UsersService,
-    private favService: FavService,
   ) { }
 
   ngOnInit(): void {
@@ -53,16 +45,8 @@ export class LayoutPageComponent implements OnInit {
     }
   }
 
-
   hayToken(): boolean {
-    let hayToken: boolean = false;
-
-    if (localStorage.getItem("token")) {
-      hayToken = true;
-    } else {
-      hayToken = false;
-    }
-    return hayToken;
+    return !!localStorage.getItem("token");
   }
 
   // Método para abrir el perfil de usuario desde la barra superior
@@ -76,21 +60,10 @@ export class LayoutPageComponent implements OnInit {
     this.isAuthenticated = false;
     // Reinicia el componente para refrescar las actualizaciones
     this.ngOnInit();
-    this.router.navigate(['/login']);
-
   }
 
   // Metodo para mostrar el boton de panel de usuario dependiendo del rol
   mostrarBotonGestion() {
-    let mostrar: boolean = false;
-    let currentRol = localStorage.getItem('rol');
-
-    if (currentRol == 'ADMIN') {
-      mostrar = true;
-    } else if (currentRol == 'USER') {
-      mostrar = false;
-    }
-
-    return mostrar;
+    this.authService.isAdmin();
   }
 }
