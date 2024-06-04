@@ -42,8 +42,6 @@ export class UsersComponent implements OnInit {
   }
 
   verFavs(idUsuario: string | number, userName: string) {
-    console.log(userName);
-
     this.router.navigate(['/users/favs', idUsuario], { state: { userName: userName } });
   }
 

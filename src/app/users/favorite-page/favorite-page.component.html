@@ -3,7 +3,7 @@
 </head>
 
 <div class="favorite-container">
-  <h1>COLECCIÓN DE FAVORITOS DE {{ userName }}</h1>
+  <h1>COLECCIÓN DE FAVORITOS DE <i>{{ userName }}</i></h1>
 
   <mat-tab-group>
     <mat-tab label="Artistas">
@@ -12,7 +12,7 @@
           <list-page [listado]="listadoArtists"></list-page>
         </ng-container>
         <ng-template #noFavoritesArtists>
-          <p class="no-favorites-text">Aún no tienes artistas favoritos.</p>
+          <p class="no-favorites-text">Aún no hay artistas favoritos.</p>
         </ng-template>
       </div>
     </mat-tab>
@@ -22,7 +22,7 @@
           <list-page [listado]="listadoReleases"></list-page>
         </ng-container>
         <ng-template #noFavoritesReleases>
-          <p class="no-favorites-text">Aún no tienes canciones/álbums favoritos.</p>
+          <p class="no-favorites-text">Aún no hay canciones/álbums favoritos.</p>
         </ng-template>
       </div>
       <div class="favorites-section">
