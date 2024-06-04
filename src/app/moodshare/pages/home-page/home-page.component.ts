@@ -7,7 +7,8 @@ import { SearchResponse } from 'src/app/shared/interfaces/search-response.interf
 
 @Component({
   selector: 'moodshare-home-page',
-  templateUrl: './home-page.component.html'
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.css']
 })
 
 export class HomePageComponent implements OnInit {

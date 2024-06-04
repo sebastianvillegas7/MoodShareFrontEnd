@@ -33,13 +33,13 @@
           </svg>
           Buscar
         </mat-list-item>
-        <mat-list-item [routerLink]="['/users/favs']" style="margin-top: 30px;" (click)="sidenav.toggle()">
+        <mat-list-item [routerLink]="['/users/favs', usersService.currentUser?.id_usuario]" style="margin-top: 30px;" (click)="sidenav.toggle()">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="margin-right: 15px;">
             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
           </svg>
           Lista de Favoritos
         </mat-list-item>
-        <mat-list-item *ngIf="mostrarBotonGestion()" [routerLink]="['/users']" style="margin-top: 30px;"
+        <mat-list-item *ngIf="authService.isAdmin()" [routerLink]="['/users']" style="margin-top: 30px;"
         (click)="sidenav.toggle()">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-badge"
           viewBox="0 0 16 16" style="margin-right: 15px">

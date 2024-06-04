@@ -12,24 +12,24 @@
     <div
       class="list-group-item list-group-item-dark"
       *ngFor="let user of usersService.listadoUsers"
-      style="box-shadow: -8px 8px 12px rgba(22, 22, 22, 10);; margin-bottom: 20px; border-radius: 20px; padding: 20px;"
+      style="box-shadow: -8px 8px 12px rgba(22, 22, 22, 10);; margin-bottom: 20px; border-radius: 20px; padding: 26px 80px;"
     >
       <div class="row">
         <div class="col-md-5">
           <div class="ms-2">
-            <div class="fw-bold" style="font-size: 36px">
+            <div class="fw-bold" style="font-size: 40px">
               {{ user.email }}
             </div>
-            <span>ID Usuario: {{ user.id_usuario }}</span><br />
-            <span>Nombre: {{ user.name }}</span><br />
-            <span>Apellido: {{ user.apellido }}</span><br />
-            <span>Rol: {{ user.roles[0].name }}</span><br />
+            <span style="font-size: 18px"><i>ID Usuario:</i> {{ user.id_usuario }}</span><br />
+            <span style="font-size: 18px"><i>Nombre:</i> {{ user.name }}</span><br />
+            <span style="font-size: 18px"><i>Apellido:</i> {{ user.apellido }}</span><br />
+            <span style="font-size: 18px"><i>Rol:</i> {{ user.roles[0].name }}</span><br />
           </div>
         </div>
 
         <div class="col-md-4 d-flex align-items-center justify-content-center">
           <div class="text-center">
-            <button mat-flat-button color="primary" class="btn btn-primary mt-2">
+            <button mat-flat-button color="primary" class="btn btn-primary mt-2" (click)="verFavs(user.id_usuario, user.name)" style="font-size: 18px">
               <mat-icon>bookmark_heart</mat-icon>
               Ver Favoritos
             </button>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-md-3 d-flex justify-content-end align-items-center">
-          <div class="d-flex flex-column" style="margin-right: 100px;">
+          <div class="d-flex flex-column">
             <button mat-icon-button color="primary" style="margin-bottom: 10px;" (click)="editUser(user)">
               <mat-icon>edit</mat-icon>
             </button>

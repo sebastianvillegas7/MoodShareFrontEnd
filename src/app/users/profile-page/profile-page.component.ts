@@ -21,16 +21,12 @@ export class ProfilePageComponent {
     public dialogRef: MatDialogRef<ProfilePageComponent>,
     @Inject(MAT_DIALOG_DATA) public user: User,
     private router: Router,
-    private snackBar: MatSnackBar,
-    private usersService: UsersService,
     public dialog: MatDialog,
     private overlay: Overlay,
-  ) {
+  ) { }
 
-  }
-
-  verFavs() {
-    this.router.navigate([`/users/favs`]);
+  verFavs(idUsuario: string | number, userName: string) {
+    this.router.navigate(['/users/favs', idUsuario], { state: { userName: userName } });
     this.dialogRef.close();
   }
 

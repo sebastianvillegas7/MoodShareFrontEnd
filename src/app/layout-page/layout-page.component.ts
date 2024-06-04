@@ -61,9 +61,4 @@ export class LayoutPageComponent implements OnInit {
     // Reinicia el componente para refrescar las actualizaciones
     this.ngOnInit();
   }
-
-  // Metodo para mostrar el boton de panel de usuario dependiendo del rol
-  mostrarBotonGestion() {
-    this.authService.isAdmin();
-  }
 }

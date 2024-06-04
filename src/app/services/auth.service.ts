@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    let currentRol = localStorage.getItem("rol");
+    let currentRol = localStorage.getItem('rol');
     return currentRol == 'ADMIN';
   }
 }

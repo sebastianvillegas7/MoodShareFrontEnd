@@ -1,16 +1,14 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
-import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SelectionModel } from '@angular/cdk/collections';
 import { User } from '../shared/interfaces/user.interface';
 import { UsersService } from '../services/users.service';
-// import { Permises } from '../shared/interfaces/api-response.interface';
 
 import { AddUserComponent } from './add-user/add-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
@@ -43,6 +41,12 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
+  verFavs(idUsuario: string | number, userName: string) {
+    console.log(userName);
+
+    this.router.navigate(['/users/favs', idUsuario], { state: { userName: userName } });
+  }
+
   async getUsers() {
     const RESPONSE = await this.usersService.getUsers().toPromise();
     this.usersService.listadoUsers = RESPONSE as User[];
@@ -52,9 +56,9 @@ export class UsersComponent implements OnInit {
     const dialogRef = this.dialog.open(AddUserComponent, { scrollStrategy: this.overlay.scrollStrategies.noop() });
     const RESULT = await dialogRef.afterClosed().toPromise();
     if (RESULT) {
-        this.usersService.listadoUsers.push(RESULT.data);
-        this.dataSource.data = this.usersService.listadoUsers;
-        this.getUsers();
+      this.usersService.listadoUsers.push(RESULT.data);
+      this.dataSource.data = this.usersService.listadoUsers;
+      this.getUsers();
     }
   }
 
