@@ -2,14 +2,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
+<div class="slider-container">
+  <div id="user-list-container" class="user-list">
+    <div class="user-card-wrapper">
+      <div class="user-card" *ngFor="let user of listaUsers">
+        <div class="user-email">{{ user.email }}</div>
+        <div class="user-name">{{ user.name }} {{ user.apellido }}</div>
+        <div class="user-button">
+          <button mat-raised-button color="primary" (click)="verFavs(user.id_usuario, user.name)">
+            <mat-icon>bookmark_heart</mat-icon>
+            Ver Favoritos</button>
+        </div>
+      </div>
+    </div>
+    <!-- Repetir las tarjetas para hacer la marquesina infinita -->
+    <div class="user-card-wrapper">
+      <div class="user-card" *ngFor="let user of listaUsers">
+        <div class="user-email">{{ user.email }}</div>
+        <div class="user-name">{{ user.name }} {{ user.apellido }}</div>
+        <div class="user-button">
+          <button mat-raised-button color="primary" (click)="verFavs(user.id_usuario, user.name)">
+            <mat-icon>bookmark_heart</mat-icon>
+            Ver Favoritos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div *ngIf="!discogsService.listadoAlbums" class="loading-container">
     <div class="spinner"></div>
     <p class="loading-text">Cargando...</p>
   </div>
 
-  <h1>ÚLTIMOS
-    RELEASES</h1>
+  <h1>ÚLTIMOS RELEASES</h1>
   <div class="col-12 d-flex justify-content-center">
     <list-page [listado]="discogsService.listadoAlbums"></list-page>
   </div>
