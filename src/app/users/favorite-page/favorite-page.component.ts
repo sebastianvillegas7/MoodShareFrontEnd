@@ -6,6 +6,9 @@ import { DiscogsService } from '../../services/discogs.service';
 import { TipoElemento } from 'src/app/shared/interfaces/favorite.interface';
 import { Observable, forkJoin, map } from 'rxjs';
 
+/**
+ * Componente para mostrar la página de favoritos de un usuario.
+ */
 @Component({
   selector: 'users-favorite-page',
   templateUrl: './favorite-page.component.html',
@@ -22,6 +25,14 @@ export class FavoritePageComponent implements OnInit {
   arrayIdsReleases: (string | number)[] = [];
   arrayIdsMasters: (string | number)[] = [];
 
+  /**
+   * Constructor del componente.
+   * @param route ActivatedRoute para obtener los parámetros de la ruta
+   * @param favService Servicio para gestionar los favoritos
+   * @param discogsService Servicio para interactuar con la API de Discogs
+   * @param router Router para la navegación entre páginas
+   * @param snackBar Servicio para mostrar mensajes emergentes
+   */
   constructor(
     private route: ActivatedRoute,
     private favService: FavService,
@@ -30,6 +41,10 @@ export class FavoritePageComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
+  /**
+   * Al inicializar el componente se obtiene los IDs de los favoritos del usuario
+   * y carga los detalles de los elementos favoritos.
+   */
   ngOnInit(): void {
     this.vaciarListados();
 
@@ -45,6 +60,10 @@ export class FavoritePageComponent implements OnInit {
     });
   }
 
+  /**
+   * Obtiene los IDs de los favoritos del usuario.
+   * @param idUsuario ID del usuario cuyos favoritos se van a obtener.
+   */
   async getIdsFavorites(idUsuario: string) {
     try {
       const RESPONSE = await this.favService.getFavs(idUsuario).toPromise();
@@ -75,6 +94,9 @@ export class FavoritePageComponent implements OnInit {
     }
   }
 
+  /**
+   * Obtiene los detalles de los elementos favoritos.
+   */
   async obtenerFavorites() {
     const OBSERVABLES_ARTISTS: Observable<any>[] = this.arrayIdsArtist.map(id =>
       this.discogsService.getInfoArtistById(id).pipe(map(data => ({ ...data, tipoElemento: TipoElemento.Artist })))
@@ -100,6 +122,9 @@ export class FavoritePageComponent implements OnInit {
     });
   }
 
+  /**
+   * Limpia los listados de favoritos.
+   */
   vaciarListados(){
     this.listadoArtists = [];
     this.listadoReleases = [];
@@ -109,6 +134,11 @@ export class FavoritePageComponent implements OnInit {
     this.arrayIdsMasters = [];
   }
 
+  /**
+   * Navega a la página de detalles del recurso seleccionado.
+   * @param resourceUrl URL del recurso
+   * @param type Tipo de recurso (artista, lanzamiento, maestro)
+   */
   verDetalle(resourceUrl: string, type: string) {
     this.router.navigate(['/moodshare/detail'], { state: { resourceUrl, type } });
   }

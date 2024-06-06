@@ -18,7 +18,14 @@ import { FavoritePageComponent } from './favorite-page/favorite-page.component';
 
 
 @NgModule({
-  declarations: [ UsersComponent, AddUserComponent, EditUserComponent, DeleteUserComponent, ProfilePageComponent, FavoritePageComponent ],
+  declarations: [
+    UsersComponent,
+    AddUserComponent,
+    EditUserComponent,
+    DeleteUserComponent,
+    ProfilePageComponent,
+    FavoritePageComponent,
+  ],
   imports: [
     CommonModule,
     UsersRoutingModule,
@@ -30,7 +37,7 @@ import { FavoritePageComponent } from './favorite-page/favorite-page.component';
     MatTabsModule,
   ],
   exports: [
-    ProfilePageComponent // agregado
+    ProfilePageComponent
   ]
 })
 export class UsersModule { }

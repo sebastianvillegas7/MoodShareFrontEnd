@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/shared/interfaces/user.interface';
-import { HttpErrorResponse } from '@angular/common/http';
 
+/**
+ * Componente para la página de registro.
+ */
 @Component({
   selector: 'register-page',
   templateUrl: './register-page.component.html',
@@ -17,6 +19,14 @@ export class RegisterPageComponent implements OnInit {
 
   registroForm!: FormGroup;
 
+  /**
+   * Constructor del componente de registro.
+   *
+   * @param authService El servicio de autenticación.
+   * @param router El enrutador para la navegación.
+   * @param formBuilder El constructor de formularios reactivos.
+   * @param snackBar El servicio de snack bar para mostrar notificaciones.
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -28,6 +38,9 @@ export class RegisterPageComponent implements OnInit {
     this.setForm();
   }
 
+  /**
+   * Configura el formulario de registro con validaciones.
+   */
   setForm() {
     this.registroForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -37,7 +50,9 @@ export class RegisterPageComponent implements OnInit {
     });
   }
 
-
+  /**
+   * Maneja el proceso de registro de usuario.
+   */
   async register() {
     if (this.registroForm.valid) {
       const USER_DATA: User = this.registroForm.value as User;
@@ -45,7 +60,7 @@ export class RegisterPageComponent implements OnInit {
         const RESPONSE = await this.authService.register(USER_DATA).toPromise();
         if (RESPONSE) {
           this.snackBar.open('¡Registro exitoso! Inicie sesión', 'Cerrar', { duration: 6000 });
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login']); // Navega a la página de inicio de sesión tras registro exitoso
         } else {
           this.snackBar.open('Registro incorrecto', 'Cerrar', { duration: 6000 });
         }
@@ -62,5 +77,4 @@ export class RegisterPageComponent implements OnInit {
       this.snackBar.open('Por favor complete el formulario correctamente', 'Cerrar', { duration: 5000 });
     }
   }
-
 }

@@ -12,13 +12,15 @@ import { User } from 'src/app/shared/interfaces/user.interface';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-
+/**
+ * Componente de inicio de la aplicación, que muestra usuarios y tendencias.
+ */
 export class HomePageComponent implements OnInit {
   public paginaActual: number = 1;
   public showLoadMoreBtn: boolean = false;
   public listaUsers: User[] = [];
-  private intervalId: any;
-  private requestId: number = 0;
+  private intervalId: any; // Identificador del intervalo
+  private requestId: number = 0; // ID de la solicitud
 
   constructor(
     public discogsService: DiscogsService,
@@ -27,13 +29,18 @@ export class HomePageComponent implements OnInit {
     private router: Router,
   ) { }
 
+  /**
+   * Al niciar el componente obtiene los usuarios y busca las tendencias.
+   */
   ngOnInit(): void {
     this.obtenerUsuarios();
     this.searchTrending();
     this.adjustInitialScroll();
   }
 
-  // Método para obtener los usuarios y mostrarlos al inicio
+  /**
+   * Obtiene los usuarios y los asigna a listaUsers.
+   */
   public obtenerUsuarios() {
     this.usersService.getUsers().subscribe(
       (data: User[]) => {
@@ -41,11 +48,18 @@ export class HomePageComponent implements OnInit {
       });
   }
 
+  /**
+   * Navega a la página de favoritos de un usuario.
+   * @param idUsuario ID del usuario.
+   * @param userName Nombre del usuario.
+   */
   verFavs(idUsuario: string | number, userName: string) {
     this.router.navigate(['/users/favs', idUsuario], { state: { userName: userName } });
   }
 
-  // Método para buscar los trending charts que se muestran en el home page
+  /**
+   * Busca las tendencias de los últimos lanzamientos.
+   */
   public searchTrending() {
     this.discogsService.getLastReleases().subscribe(
       (respuesta: SearchResponse<Album>) => {
@@ -59,14 +73,20 @@ export class HomePageComponent implements OnInit {
     );
   }
 
-  // Métodos necesarios para el desplazamiento horizontal de la lista de usuario
+  /**
+   * Ajusta el desplazamiento horizontal.
+   */
   adjustInitialScroll() {
     const container = document.getElementById('user-list-container');
     if (container) {
-      container.scrollLeft = container.scrollWidth / 2; // Ajusta para que la primera tarjeta esté en el centro
+      container.scrollLeft = container.scrollWidth / 2;
     }
   }
 
+  /**
+   * Inicia el desplazamiento horizontal de la lista de usuarios.
+   * @param event Evento de mouse.
+   */
   startDrag(event: MouseEvent) {
     const slider = document.querySelector('.user-list');
     if (slider instanceof HTMLElement) {
@@ -95,7 +115,7 @@ export class HomePageComponent implements OnInit {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; // Ajusta la velocidad de desplazamiento
+        const walk = (x - startX) * 3; // Velocidad de desplazamiento
         slider.scrollLeft = scrollLeft - walk;
       });
     }

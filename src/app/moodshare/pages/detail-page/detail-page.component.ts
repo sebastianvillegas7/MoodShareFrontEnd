@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DiscogsService } from 'src/app/services/discogs.service';
@@ -10,12 +10,15 @@ import { Favorite } from 'src/app/shared/interfaces/favorite.interface';
   templateUrl: './detail-page.component.html',
   styleUrls: ['./detail-page.component.css'],
 })
+/**
+ * Este componente muestra los detalles de un elemento específico y
+ * permite al usuario agregarlo o quitarlo de sus favoritos.
+ */
 export class DetailPageComponent implements OnInit {
   esFavorita: boolean = false;
-
-  resourceUrl: string = "";
+  resourceUrl: string = ""; // URL del recurso a obtener
   tipoElemento: string = "";
-  resourceData: any;
+  resourceData: any; // Datos del recurso obtenido
 
   idElemento: string = "";
   idUsuario: string | number = "";
@@ -27,6 +30,9 @@ export class DetailPageComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
+  /**
+   * Obtiene los detalles del recurso y comprueba si es favorito.
+   */
   async ngOnInit(): Promise<void> {
     this.idElemento = history.state.idElemento;
     this.resourceUrl = history.state.resourceUrl;
@@ -36,7 +42,6 @@ export class DetailPageComponent implements OnInit {
     // Obtener los IDs de favoritos del usuario y esperar a que se completen
     await this.favService.getUserFavoriteIds(this.idUsuario);
 
-    // Comprobar si el elemento es favorito
     this.comprobarSiEsFavorita();
 
     this.discogsService.getResourceDataByUrl(this.resourceUrl).subscribe(
@@ -62,6 +67,10 @@ export class DetailPageComponent implements OnInit {
     );
   }
 
+  /**
+   * Obtiene los lanzamientos del artista.
+   * @param artistId ID del artista.
+   */
   getReleases(artistId: number | string): void {
     this.discogsService.getArtistReleases(artistId).subscribe(
       (data) => {
@@ -74,11 +83,16 @@ export class DetailPageComponent implements OnInit {
     );
   }
 
+  /**
+   * Comprueba si el elemento es favorito.
+   */
   comprobarSiEsFavorita(): void {
     this.esFavorita = this.favService.idsFavoritesDelUsuario.includes(this.idElemento.toString());
   }
 
-  // Lógica para agregar o quitar la película de la lista de favoritos según su estado
+  /**
+   * Alternar el estado de favorito del elemento.
+   */
   toggleFav(): void {
     if (this.esFavorita) {
       this.quitarFavorita();
@@ -87,6 +101,9 @@ export class DetailPageComponent implements OnInit {
     }
   }
 
+  /**
+   * Agregar el elemento a favoritos.
+   */
   async agregarFavorita(): Promise<void> {
     const NEW_FAVORITE: Favorite = {
       idUsuario: this.idUsuario,
@@ -112,6 +129,9 @@ export class DetailPageComponent implements OnInit {
     }
   }
 
+  /**
+   * Quitar el elemento de favoritos.
+   */
   async quitarFavorita(): Promise<void> {
     try {
       if (this.favService.idsFavoritesDelUsuario.includes(this.idElemento.toString())) {
@@ -129,7 +149,9 @@ export class DetailPageComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Navegar a la página de inicio.
+   */
   goBack(): void {
     this.router.navigate(['/moodshare/home']);
   }

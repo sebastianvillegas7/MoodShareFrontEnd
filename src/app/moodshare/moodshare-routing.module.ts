@@ -5,6 +5,9 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
+/**
+ * Rutas de la aplicación para acceder al contenido de Discogs.
+ */
 const routes: Routes = [
   {
     path: '',
@@ -23,4 +26,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
+/**
+ * Módulo de enrutamiento al contenido de Discogs.
+ */
 export class MoodShareRoutingModule { }

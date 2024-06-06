@@ -33,7 +33,9 @@
           </div>
         </div>
         <div class="bottom-buttons">
-          <button mat-raised-button color="primary" class="editar-button" (click)="verFavs(user.id_usuario, user.name)">Ver Favoritos</button>
+          <button mat-raised-button color="primary" class="editar-button" (click)="verFavs(user.id_usuario, user.name)">
+            <mat-icon>bookmark_heart</mat-icon>
+            Ver Favoritos</button>
           <button mat-stroked-button color="primary" class="editar-button" (click)="editUser(user)">Editar</button>
           <button mat-flat-button color="primary" class="cerrar-button" (click)="goBack()">Cerrar</button>
         </div>

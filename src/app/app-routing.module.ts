@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
 import { AuthGuardService } from './guards/auth.guard';
-import { UserRoleGuard } from './guards/user-role.guard';
 
+/**
+ * Rutas principales de la aplicación Angular.
+ */
 const routes: Routes = [
   {
     path: '',
@@ -17,7 +19,7 @@ const routes: Routes = [
       {
         path: 'moodshare',
         loadChildren: () => import('./moodshare/moodshare.module').then(m => m.MoodShareModule),
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService] // Protección de ruta con guardia de autenticación
       },
       {
         path: 'users',
@@ -37,9 +39,11 @@ const routes: Routes = [
   }
 ];
 
+/**
+ * Módulo de enrutamiento de la aplicación.
+ */
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule { }

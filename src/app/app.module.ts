@@ -15,6 +15,9 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProfilePageComponent } from './users/profile-page/profile-page.component';
 
+/**
+ * Módulo principal de la aplicación MoodShare.
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,26 +25,25 @@ import { ProfilePageComponent } from './users/profile-page/profile-page.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
+    SharedModule, // Módulo compartido con componentes reutilizables
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
     MatDialogModule,
-    AuthModule,
-    UsersModule // agregado
+    AuthModule, // Módulo de autenticación
+    UsersModule // Módulo de gestión de usuarios
   ],
   exports: [
-    ProfilePageComponent // agregado
+    ProfilePageComponent // Componente de perfil de usuario exportado para su uso en otros módulos
   ],
   providers: [
-    AuthService,
+    AuthService, // Servicio de autenticación
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
+      provide: HTTP_INTERCEPTORS, // Proveedor de interceptores HTTP
+      useClass: AuthInterceptor, // Clase del interceptor de autenticación
+      multi: true // Permite múltiples interceptores
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // Componente principal que se arranca al iniciar la aplicación
 })
-
 export class AppModule { }

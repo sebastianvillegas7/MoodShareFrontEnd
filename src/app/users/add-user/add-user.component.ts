@@ -1,18 +1,29 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/shared/interfaces/user.interface';
 
+/**
+ * Componente para agregar un nuevo usuario.
+ */
 @Component({
   selector: 'users-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  addUserForm!: FormGroup;
+  addUserForm!: FormGroup; // Formulario para agregar usuario
 
+  /**
+   * Constructor del componente.
+   * @param dialogRef Referencia al cuadro de diálogo
+   * @param snackBar Servicio para mostrar mensajes emergentes
+   * @param formBuilder Constructor de formularios reactivos
+   * @param usersService Servicio para gestionar usuarios
+   * @param data Datos inyectados al componente
+   */
   constructor(
     public dialogRef: MatDialogRef<AddUserComponent>,
     private snackBar: MatSnackBar,
@@ -21,20 +32,29 @@ export class AddUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
+  /**
+   * Al inicializar el componente configura el formulario de adición de un usuario.
+   */
   ngOnInit(): void {
     this.setForm();
   }
 
+  /**
+   * Configurar el formulario de adición de un usuario.
+   */
   setForm() {
     this.addUserForm = this.formBuilder.group({
       name: ['', Validators.required],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      // rol: new FormControl(null, [Validators.required]),
     });
   }
 
+  /**
+   * Método para confirmar la adición de un nuevo usuario.
+   * Si el formulario es válido, agrega el usuario al servidor.
+   */
   async confirmAdd() {
     if (this.addUserForm.valid) {
       const NEW_USER = this.addUserForm.value as User;

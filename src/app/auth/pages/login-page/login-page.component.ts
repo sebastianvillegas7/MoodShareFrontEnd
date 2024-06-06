@@ -6,6 +6,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/shared/interfaces/user.interface';
 
+/**
+ * Componente para el de inicio de sesión.
+ */
 @Component({
   selector: 'login-page',
   templateUrl: './login-page.component.html',
@@ -16,6 +19,15 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
 
+  /**
+   * Constructor del componente de inicio de sesión.
+   *
+   * @param authService El servicio de autenticación.
+   * @param router El enrutador para la navegación.
+   * @param formBuilder El constructor de formularios reactivos.
+   * @param snackBar El servicio de snack bar para mostrar notificaciones.
+   * @param usersService El servicio de usuarios para obtener información del usuario.
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -28,6 +40,9 @@ export class LoginPageComponent implements OnInit {
     this.setForm();
   }
 
+  /**
+   * Configura el formulario de inicio de sesión con validaciones.
+   */
   setForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,6 +50,9 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  /**
+   * Establece el usuario actual en base al ID almacenado en localStorage.
+   */
   async setUserById() {
     let id_usuario = localStorage.getItem('id_usuario');
     try {
@@ -55,6 +73,9 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
+  /**
+   * Maneja el proceso de inicio de sesión.
+   */
   async login() {
     if (this.loginForm.valid) {
       const USER_DATA = this.loginForm.value;
@@ -70,7 +91,7 @@ export class LoginPageComponent implements OnInit {
         if (error.status === 401) {
           this.snackBar.open("Usuario/contraseña incorrectos.", 'Cerrar', { duration: 6000 });
         } else {
-          this.snackBar.open('Error', 'Cerrar', { duration: 6000 });
+          this.snackBar.open('Error al iniciar sesión.', 'Cerrar', { duration: 6000 });
         }
       }
     }

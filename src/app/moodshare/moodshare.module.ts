@@ -13,7 +13,9 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
 import { DefaultImagePipe } from '../shared/pipes/default-image.pipe';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
-
+/**
+ * Módulo para gestionar los datos de la API de Discogs.
+ */
 @NgModule({
   declarations: [
     LayoutPageComponent,
@@ -29,7 +31,6 @@ import { DetailPageComponent } from './pages/detail-page/detail-page.component';
     MaterialModule,
     ReactiveFormsModule,
     MatDialogModule
-    // UsersModule              verificar
   ],
   exports: [ListPageComponent]
 })

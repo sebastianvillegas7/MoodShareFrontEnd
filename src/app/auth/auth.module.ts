@@ -7,7 +7,9 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-
+/**
+ * Módulo de autenticación de la aplicación Angular.
+ */
 @NgModule({
   declarations: [
     LoginPageComponent,
