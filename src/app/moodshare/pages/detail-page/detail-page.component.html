@@ -52,7 +52,7 @@
         </ul>
       </div>
       <div class="moodshare-buttons">
-        <button mat-raised-button [color]="esFavorita ? 'accent' : 'primary'" class="large-button mat-raised-button" (click)="toggleFav()">
+        <button mat-raised-button [color]="esFavorita ? 'warn' : 'primary'" class="large-button mat-raised-button" (click)="toggleFav()">
           <mat-icon>{{ esFavorita ? '360' : 'favorite' }}</mat-icon>
           {{ esFavorita ? 'QUITAR DE FAVORITAS' : 'AGREGAR A FAVORITAS' }}
         </button>
