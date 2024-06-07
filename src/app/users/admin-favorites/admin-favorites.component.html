@@ -1,0 +1,72 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h1 class="mt-5 text-center">Administrar Favoritos</h1>
+      <div class="filters-container mt-4 d-flex justify-content-center">
+        <div class="form-group mr-2">
+          <label for="filterIdUsuario">Filtrar por ID Usuario</label>
+          <select id="filterIdUsuario" class="form-control" [(ngModel)]="filterIdUsuario" (change)="applyFilter()">
+            <option value="">Todos</option>
+            <option *ngFor="let user of uniqueUsuarios" [value]="user">{{ user }}</option>
+          </select>
+        </div>
+        <div class="form-group ml-2">
+          <label for="filterTipoElemento">Filtrar por Tipo Elemento</label>
+          <select id="filterTipoElemento" class="form-control" [(ngModel)]="filterTipoElemento" (change)="applyFilter()">
+            <option value="">Todos</option>
+            <option *ngFor="let tipo of uniqueTipos" [value]="tipo">{{ tipo }}</option>
+          </select>
+        </div>
+      </div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="idFav">
+          <th mat-header-cell *matHeaderCellDef> ID Favorito </th>
+          <td mat-cell *matCellDef="let element"> {{element.idFav}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="idUsuario">
+          <th mat-header-cell *matHeaderCellDef> ID Usuario </th>
+          <td mat-cell *matCellDef="let element"> {{element.idUsuario}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="idElemento">
+          <th mat-header-cell *matHeaderCellDef> ID Elemento </th>
+          <td mat-cell *matCellDef="let element"> {{element.idElemento}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipoElemento">
+          <th mat-header-cell *matHeaderCellDef> Tipo Elemento </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipoElemento}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button class="btn btn-danger" (click)="deleteFavorite(element.idUsuario, element.idElemento)">
+              <mat-icon style="margin-right: 5px;">delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="mt-4 d-flex justify-content-center">
+        <mat-paginator [length]="dataSource.filteredData.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>

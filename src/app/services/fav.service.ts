@@ -33,6 +33,14 @@ export class FavService {
   }
 
   /**
+   * Método para obtener todos los favoritos de la BBDD.
+   * @returns Un Observable que emite un array de todos los favoritos.
+   */
+    getAllFavs() {
+      return this.httpClient.get<Favorite[]>(`${URL_BASE_BACKEND}/${ENDPOINT}`);
+    }
+
+  /**
    * Método para agregar un nuevo favorito.
    * @param favorite Objeto que contiene la información del favorito a agregar.
    * @returns Un Observable que emite el favorito agregado.

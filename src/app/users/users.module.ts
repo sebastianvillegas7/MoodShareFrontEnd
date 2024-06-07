@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { UsersRoutingModule } from './user-routing.module';
 import { MaterialModule } from '../material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './add-user/add-user.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
@@ -14,6 +14,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FavoritePageComponent } from './favorite-page/favorite-page.component';
+import { AdminFavoritesComponent } from './admin-favorites/admin-favorites.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -25,6 +30,7 @@ import { FavoritePageComponent } from './favorite-page/favorite-page.component';
     DeleteUserComponent,
     ProfilePageComponent,
     FavoritePageComponent,
+    AdminFavoritesComponent,
   ],
   imports: [
     CommonModule,
@@ -35,9 +41,15 @@ import { FavoritePageComponent } from './favorite-page/favorite-page.component';
     MoodShareModule,
     MatDialogModule,
     MatTabsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatPaginatorModule,
+    FormsModule
   ],
   exports: [
-    ProfilePageComponent
+    ProfilePageComponent,
+    AdminFavoritesComponent
   ]
 })
 export class UsersModule { }
