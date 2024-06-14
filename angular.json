@@ -32,7 +32,8 @@
               "@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/MoodShareFrontEnd/"
           },
           "configurations": {
             "production": {
@@ -48,7 +49,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/MoodShareFrontEnd/"
             },
             "development": {
               "buildOptimizer": false,
