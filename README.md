@@ -34,3 +34,14 @@ MoodShare es una aplicación inspirada en mi amor por la música y el deseo de c
 <img src="src/assets/img/screenshots/04-large.png" alt="MoodShare App" width="400px">
 
 <img src="src/assets/img/screenshots/05-large.png" alt="MoodShare App" width="400px">
+
+
+## Instalación y Ejecución
+>[!IMPORTANT]
+> Asegúrate de tener instalados los siguientes programas en tu sistema:
+
+- Node.js (versión 16 o superior): [Descargar Node.js](https://nodejs.org/es)
+- Angular CLI (versión 16 o superior): 
+Instalar con el comando:
+npm install -g @angular/cli
+- Git (opcional, para clonar el repositorio): [Descargar Git](https://git-scm.com/)
