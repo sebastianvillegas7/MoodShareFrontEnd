@@ -1,4 +1,4 @@
-# MoodShare
+# MoodShare Front-end
 > [!NOTE]
 > Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
@@ -63,6 +63,7 @@ npm install
 
 ng serve
 
-> Esto iniciará un servidor de desarrollo. Luego, abre tu navegador y ve a:
+> [!IMPORTANT]
+> Luego, abre tu navegador y ve a:
 
 http://localhost:4200
