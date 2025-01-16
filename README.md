@@ -1,44 +1,39 @@
-# MoodShare Front-end
+# Ligas Torremolinos
 > [!NOTE]
-> Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
-
-
-> [!NOTE]
-> También puedes ver el repositorio del [Back-end](https://github.com/sebastianvillegas7/MoodShareBackEnd) de este proyecto.
-
+> Este proyecto fue generado con [Python 3.12.5](https://www.python.org/) y [Django](https://www.djangoproject.com/).
 
 MoodShare es una aplicación inspirada en mi amor por la música y el deseo de compartirlo con los demás, ha sido desarrollada con la idea de combinar esta visión con los conceptos aprendidos durante mi formación académica.
 
 ## Diseño de la aplicación
-<img src="src/assets/img/mood-pdf/diseno-app.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/mood-pdf/diseno-app.png" alt="MoodShare App" width="500px">
 
 ## Front-end
-<img src="src/assets/img/mood-pdf/front-end.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/mood-pdf/front-end.png" alt="MoodShare App" width="500px">
 
 ## Back-end
-<img src="src/assets/img/mood-pdf/back-end.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/mood-pdf/back-end.png" alt="MoodShare App" width="500px">
 
 ## API Rest
-<img src="src/assets/img/mood-pdf/api-rest.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/mood-pdf/api-rest.png" alt="MoodShare App" width="500px">
 
 ## Flujo de Operación
-<img src="src/assets/img/mood-pdf/flujo-operacion.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/mood-pdf/flujo-operacion.png" alt="MoodShare App" width="500px">
 
 ## Despliegue
-<img src="src/assets/img/mood-pdf/deploy.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/mood-pdf/deploy.png" alt="MoodShare App" width="500px">
 
 ## Capturas
-<img src="src/assets/img/screenshots/00-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/00-large.png" alt="MoodShare App" width="500px">
 
-<img src="src/assets/img/screenshots/01-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/01-large.png" alt="MoodShare App" width="500px">
 
-<img src="src/assets/img/screenshots/02-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/02-large.png" alt="MoodShare App" width="500px">
 
-<img src="src/assets/img/screenshots/03-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/03-large.png" alt="MoodShare App" width="500px">
 
-<img src="src/assets/img/screenshots/04-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/04-large.png" alt="MoodShare App" width="500px">
 
-<img src="src/assets/img/screenshots/05-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/05-large.png" alt="MoodShare App" width="500px">
 
 
 ## Instalación y Ejecución
