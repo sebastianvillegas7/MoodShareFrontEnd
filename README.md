@@ -1,6 +1,9 @@
-# Ligas Torremolinos
+# MoodShare Front-end
 > [!NOTE]
-> Este proyecto fue generado con [Python 3.12.5](https://www.python.org/) y [Django](https://www.djangoproject.com/).
+> Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+
+> [!NOTE]
+> También puedes ver el repositorio del [Back-end](https://github.com/sebastianvillegas7/MoodShareBackEnd) de este proyecto.
 
 MoodShare es una aplicación inspirada en mi amor por la música y el deseo de compartirlo con los demás, ha sido desarrollada con la idea de combinar esta visión con los conceptos aprendidos durante mi formación académica.
 
