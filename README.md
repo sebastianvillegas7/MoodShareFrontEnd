@@ -23,7 +23,7 @@ MoodShare es una aplicación inspirada en mi amor por la música y el deseo de c
 <img src="src/assets/img/mood-pdf/deploy.png" alt="MoodShare App" width="400px">
 
 ## Capturas
-<img src="src/assets/img/screenshots/07-large.png" alt="MoodShare App" width="400px">
+<img src="src/assets/img/screenshots/00-large.png" alt="MoodShare App" width="400px">
 
 <img src="src/assets/img/screenshots/01-large.png" alt="MoodShare App" width="400px">
 
