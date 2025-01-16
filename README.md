@@ -1,7 +1,7 @@
 
 ## Diseño de la aplicación
 
-![Texto alternativo](assets/img/portfolio/mood/mood-pdf "Diseño de la app")
+![Texto alternativo](src/assets/img/mood-pdf/diseno-app.pdf "Diseño de la app")
 
 
 # MoodShare
