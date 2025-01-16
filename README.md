@@ -52,3 +52,16 @@ npm install -g @angular/cli
 > Clona este proyecto en tu máquina local utilizando Git:
 
 git clone https://github.com/sebastianvillegas7/MoodShareFrontEnd.git
+
+### 2. Instalar dependencias
+> Ejecuta el siguiente comando para instalar las dependencias necesarias:
+
+npm install
+
+### 2. Ejecutar el servidor de desarrollo
+> Para iniciar la aplicación en modo de desarrollo, ejecuta:
+
+ng serve
+
+Esto iniciará un servidor de desarrollo. Luego, abre tu navegador y ve a:
+http://localhost:4200
