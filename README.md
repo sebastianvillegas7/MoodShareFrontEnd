@@ -63,5 +63,6 @@ npm install
 
 ng serve
 
-Esto iniciará un servidor de desarrollo. Luego, abre tu navegador y ve a:
+> Esto iniciará un servidor de desarrollo. Luego, abre tu navegador y ve a:
+
 http://localhost:4200
