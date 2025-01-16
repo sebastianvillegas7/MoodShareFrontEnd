@@ -1,7 +1,7 @@
 
 ## Diseño de la aplicación
 
-![MoodShare App](src/assets/img/mood-pdf/diseno-app.pdf "Diseño de la app")
+![MoodShare App](src/assets/img/mood-pdf/diseno-app.png "Diseño de la app")
 
 
 # MoodShare
