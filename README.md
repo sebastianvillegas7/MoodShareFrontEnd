@@ -11,69 +11,77 @@
 
 ## 🚀 Tecnologías Utilizadas
 
-`Angular 16` Framework para el front-end.
+`Angular 16` Framework para el desarrollo del front-end.
 
-`JavaScript` y `TypeScript` Lenguajes para el desarrollo.
+`JavaScript` y `TypeScript` Lenguajes utilizados para el desarrollo de la lógica y funcionalidades.
 
 `MySQL` Base de datos relacional utilizada para almacenar la información.
 
-`HTML + CSS` & `Bootstrap` Framework CSS para diseño responsivo.
+`HTML + CSS` & `Bootstrap` Herramientas para el diseño responsivo y la estructura visual del sitio.
 
 ---
 
-## Diseño de la aplicación
+## 🛠️ Diseño y Arquitectura
+### Diseño de la Aplicación
 <img src="src/assets/img/mood-pdf/diseno-app.png" alt="MoodShare App" width="800px">
 
 ---
 
-## Front-end
+### Front-end
 <img src="src/assets/img/mood-pdf/front-end.png" alt="MoodShare App" width="800px">
 
 ---
 
-## Back-end
+### Back-end
 <img src="src/assets/img/mood-pdf/back-end.png" alt="MoodShare App" width="800px">
 
 ---
 
-## API Rest
+### API Rest
 <img src="src/assets/img/mood-pdf/api-rest.png" alt="MoodShare App" width="800px">
 
 ---
 
-## Flujo de Operación
+### Flujo de Operación
 <img src="src/assets/img/mood-pdf/flujo-operacion.png" alt="MoodShare App" width="800px">
 
 ---
 
-## Despliegue
+### Despliegue
 <img src="src/assets/img/mood-pdf/deploy.png" alt="MoodShare App" width="800px">
 
 ---
 
 ## 📸 Capturas de Pantalla
-<img src="src/assets/img/screenshots/00-large.png" alt="MoodShare App" width="800px">
+### Página Principal
+<img src="src/assets/img/screenshots/00-large.png" alt="MoodShare Principal" width="800px">
 
-<img src="src/assets/img/screenshots/01-large.png" alt="MoodShare App" width="800px">
+### Registro de Usuario
+<img src="src/assets/img/screenshots/01-large.png" alt="Registro MoodShare" width="800px">
 
-<img src="src/assets/img/screenshots/02-large.png" alt="MoodShare App" width="800px">
+### Inicio de Sesión
+<img src="src/assets/img/screenshots/02-large.png" alt="Inicio Sesión MoodShare" width="800px">
 
-<img src="src/assets/img/screenshots/03-large.png" alt="MoodShare App" width="800px">
+### Panel de Usuario
+<img src="src/assets/img/screenshots/03-large.png" alt="Panel MoodShare" width="800px">
 
-<img src="src/assets/img/screenshots/04-large.png" alt="MoodShare App" width="800px">
+### Lista de Reproducción
+<img src="src/assets/img/screenshots/04-large.png" alt="Lista MoodShare" width="800px">
 
-<img src="src/assets/img/screenshots/05-large.png" alt="MoodShare App" width="800px">
+### Detalles de Canciones
+<img src="src/assets/img/screenshots/05-large.png" alt="Detalles MoodShare" width="800px">
 
+---
 
 ## 🛠️ Instalación y Ejecución
 >[!IMPORTANT]
 > Asegúrate de tener instalados los siguientes programas en tu sistema:
 
 - **Node.js** (versión 16 o superior): [Descargar Node.js](https://nodejs.org/es)
-- **Angular CLI** (versión 16 o superior)
+- **Angular CLI** (versión 16 o superior): [Guía de instalación](https://angular.io/cli)
 - **Git** (opcional, para clonar el repositorio): [Descargar Git](https://git-scm.com/)
-  
-> Instalar con el comando:
+
+> Para instalar Angular CLI, utiliza el comando:
 ```
 npm install -g @angular/cli
 ```
