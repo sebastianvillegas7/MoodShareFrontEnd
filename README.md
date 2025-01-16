@@ -1,7 +1,7 @@
 
 ## Diseño de la aplicación
 
-![MoodShare App](src/assets/img/mood-pdf/diseno-app.png "Diseño de la app")
+<img src="src/assets/img/mood-pdf/diseno-app.png" alt="MoodShare App" width="400px">
 
 
 # MoodShare
