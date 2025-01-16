@@ -1,6 +1,6 @@
 # MoodShare
-
-Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+> [!NOTE]
+> Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
 MoodShare es una aplicación inspirada en mi amor por la música y el deseo de compartirlo con los demás, ha sido desarrollada con la idea de combinar esta visión con los conceptos aprendidos durante mi formación académica.
 
@@ -45,3 +45,10 @@ MoodShare es una aplicación inspirada en mi amor por la música y el deseo de c
 Instalar con el comando:
 npm install -g @angular/cli
 - Git (opcional, para clonar el repositorio): [Descargar Git](https://git-scm.com/)
+
+
+### 1. Clonar el repositorio
+>[!TIP]
+> Clona este proyecto en tu máquina local utilizando Git:
+
+git clone https://github.com/sebastianvillegas7/MoodShareFrontEnd.git
